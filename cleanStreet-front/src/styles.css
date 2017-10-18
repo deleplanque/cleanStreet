@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+html{
+  background-image: url('assets/images/back.jpg');
+  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  background-size: cover; /* version standardisÃ©e */
+}
+
+.btn, .btn-large {
+  background-color: #1e88e5;
+}
+
+.btn:hover, .btn-large:hover {
+  background-color: #2196f3;
+}
+.input-field label{
+  color:#42a5f5;
+}
+
+input[type="range"] + .thumb{
+  background-color: #1565c0;
+}
+
+.label-login{
+  font-size: 1.3rem;
+  color: #1e88e5;
+}
+
