@@ -1,0 +1,6 @@
+com\cleanStreet\webApp\domaine\Utilisateur.class
+com\cleanStreet\webApp\contolleurs\log\Inscription.class
+com\cleanStreet\webApp\ServletInitializer.class
+com\cleanStreet\webApp\domaine\Signalement.class
+com\cleanStreet\webApp\WebAppApplication.class
+com\cleanStreet\webApp\contolleurs\log\Connexion.class
