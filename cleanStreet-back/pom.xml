@@ -15,7 +15,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.7.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
@@ -72,42 +72,46 @@
 
 
 
-<plugin>
-<artifactId>maven-resources-plugin</artifactId>
-<executions>
-      <execution>
-          <id>copy-resources</id>
-          <phase>validate</phase>
-          <goals><goal>copy-resources</goal></goals>
-          <configuration>
-              <outputDirectory>${basedir}/target/classes/static/</outputDirectory >
-              <resources>
-                  <resource>
-                      <directory>${basedir}/../angular4-client/dist</directory >
-                  </resource>
-              </resources>
-          </configuration>
-      </execution>
-</executions>
-</plugin>
-<plugin>
-<artifactId>maven-resources-plugin</artifactId>
-<executions>
-      <execution>
-          <id>copy-resources</id>
-          <phase>validate</phase>
-          <goals><goal>copy-resources</goal></goals>
-          <configuration>
-              <outputDirectory>${basedir}/target/classes/static/</outputDirectory >
-              <resources>
-                  <resource>
-                      <directory>${basedir}/../cleanStreet-front/dist</directory >
-                  </resource>
-              </resources>
-          </configuration>
-      </execution>
-</executions>
-</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/classes/static/</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/../angular4-client/dist</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/classes/static/</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/../cleanStreet-front/dist</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 

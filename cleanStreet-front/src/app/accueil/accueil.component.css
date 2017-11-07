@@ -3,10 +3,10 @@ html{
   -webkit-background-size: cover; /* pour anciens Chrome et Safari */
   background-size: cover; /* version standardisÃ©e */
   color: white;
+  background-color: #ffffff;
 }
 
 .container{
-  background-color : #eeeeee;
   color: white !important;
   font-family: "gentium", Verdana, Arial, sans-serif;
   padding: 0px;
@@ -133,3 +133,8 @@ input[type="range"] + .thumb{
   font-size: 20px;
   color: lightslategrey;
 }
+
+
+
+/* sidebar style */
+

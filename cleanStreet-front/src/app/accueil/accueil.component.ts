@@ -7,4 +7,7 @@ import {AccueilService} from './accueil.service';
   styleUrls: ['./accueil.component.css'],
   providers: [AccueilService]
 })
-export class AccueilComponent {}
+export class AccueilComponent {
+
+
+}
