@@ -9,6 +9,7 @@ import {InscriptionService} from './authentifiation/inscription/inscription.serv
 import {HttpModule} from '@angular/http';
 import {AppRoutingModule} from './app.routing.module';
 import {AccueilComponent} from './accueil/accueil.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {AccueilComponent} from './accueil/accueil.component';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     InscriptionService

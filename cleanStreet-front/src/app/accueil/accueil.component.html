@@ -1,6 +1,16 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  Compiled and minified JavaScript
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Compiled and minified CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<header>
 <nav>
   <div class="nav-wrapper">
-    <a href="#" class="brand-logo">Clean Street</a>
+    <a href="#" class="brand-logo"><img class="img-responsive logo" src="../../assets/images/logo2.png"></a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><a href="sass.html">Nous contacter</a></li>
       <li><a href="badges.html">Signaler</a></li>
@@ -9,10 +19,30 @@
     </ul>
   </div>
 </nav>
-<div class="container">
+</header>
+<body>
+
+<ul id="slide-out" class="side-nav">
+  <li><div class="user-view">
+    <div class="background">
+      <img src="../../assets/images/logo2.png">
+    </div>
+    <a href="#!user"><img class="circle" src="../../assets/images/logo2.png"></a>
+    <a href="#!name"><span class="white-text name">John Doe</span></a>
+    <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+  </div></li>
+  <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+  <li><a href="#!">Second Link</a></li>
+  <li><div class="divider"></div></li>
+  <li><a class="subheader">Subheader</a></li>
+  <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+</ul>
+<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+
+</body>
 
 
-</div>
+
 <footer>
   <div class="row partie">
     <div class="col s4">
@@ -39,3 +69,18 @@
 
   </div>
 </footer>
+
+<script>
+  $(".button-collapse").sideNav();
+  $('.button-collapse').sideNav({
+    menuWidth: 300, // Default is 300
+    edge: 'right', // Choose the horizontal origin
+    closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    draggable: true, // Choose whether you can drag to open on touch screens,
+    onOpen: function(el) { $('.button-collapse').sideNav('show')/* Do Stuff*/ }, // A function to be called when sideNav is opened
+      onClose: function(el) { $('.button-collapse').sideNav('hide');}
+
+  );
+
+</script>
+
