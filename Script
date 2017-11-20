@@ -1,0 +1,6 @@
+docker stop front
+docker rm front
+docker rmi front
+docker build -t front .
+docker run --name front -d -p 4200:8080 front
+
