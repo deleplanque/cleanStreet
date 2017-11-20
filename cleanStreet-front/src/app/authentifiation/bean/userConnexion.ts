@@ -1,8 +1,8 @@
 export class UserConnexion {
 
   constructor(
-    public mail: string,
-    public pass: string
+    public UCemail: string,
+    public UCpass: string
   ) {  }
 
 }

@@ -1,9 +1,9 @@
 export class UserInscription {
   constructor(
-    public nom: string,
-    public prenom: string,
-    public mail: string,
-    public pass: string,
-    public repetepass: string
+    public UInom: string,
+    public UIprenom: string,
+    public UImail: string,
+    public UIpass: string,
+    public UIrepetepass: string
   ) {  }
 }

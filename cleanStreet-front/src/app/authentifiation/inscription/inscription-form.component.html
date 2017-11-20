@@ -3,15 +3,15 @@
   <h2>Signaler, Optimiser, Sensibiliser</h2>
 </div>
 <div class="panel-inscription col-md-8 col-md-offset-2">
-  <form [formGroup]="inscriptionForm" (ngSubmit)="inscription(inscriptionForm.value)" >
+  <form [formGroup]="inscriptionForm" (ngSubmit)="inscription()" >
 
     <div class="col-md-12 col-md-offset-3">
       <div class="col-md-12 col-sm-6">
         <div class="form-group col-md-3">
-          <input id="nom" formControlName="nom"  class="form-control" [(ngModel)]="formulaire.nom" placeholder="Nom" required>
+          <input id="nom" formControlName="nom"  class="form-control" [(ngModel)]="formulaire.UInom" placeholder="Nom" required>
         </div>
         <div class="form-group col-md-3">
-          <input id="prenom" formControlName="prenom" class="form-control" [(ngModel)]="formulaire.prenom" placeholder="Prénom" required>
+          <input id="prenom" formControlName="prenom" class="form-control" [(ngModel)]="formulaire.UIprenom" placeholder="Prénom" required>
         </div>
         <div class="col-md-4">
           <div *ngIf="nom.invalid && (nom.dirty || nom.touched) || prenom.invalid && (prenom.dirty || prenom.touched)" class="tool">
@@ -21,18 +21,18 @@
       </div>
       <div class="col-md-12">
         <div class="form-group col-md-6">
-          <input type="text" formControlName="mail" id="mail" class="form-control" [(ngModel)]="formulaire.mail" placeholder="Email: xyz@exemple.com" required>
+          <input type="text" formControlName="mail" id="mail" class="form-control" [(ngModel)]="formulaire.UImail" placeholder="Email: xyz@exemple.com" required>
         </div>
         <div class="col-md-4">
           <div *ngIf="mail.invalid && (mail.dirty || mail.touched)" class="tool">
-            <p>Email non renseigné ou invalide</p>
+            <a routerLink="/connexion" routerLinkActive>Email non renseigné ou invalide</a>
           </div>
         </div>
       </div>
 
       <div class="col-md-12">
         <div class="form-group col-md-6">
-          <input type="password" formControlName="pass" id="pass" [(ngModel)]="formulaire.pass" class="form-control" placeholder="Mot de passe" required>
+          <input type="password" formControlName="pass" id="pass" [(ngModel)]="formulaire.UIpass" class="form-control" placeholder="Mot de passe" required>
         </div>
         <div class="col-md-4">
           <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="tool">
@@ -42,7 +42,7 @@
       </div>
       <div class="col-md-12">
         <div class="form-group col-md-6">
-          <input type="password" formControlName="repetepass" id="repetepass" [(ngModel)]="formulaire.repetepass" class="form-control" placeholder="Mot de passe" required>
+          <input type="password" formControlName="repetepass" id="repetepass" [(ngModel)]="formulaire.UIrepetepass" class="form-control" placeholder="Mot de passe" required>
         </div>
         <div class="col-md-4">
           <div *ngIf="repetepass.invalid && (repetepass.dirty || repetepass.touched)" class="tool">
@@ -57,7 +57,7 @@
             </div>
         </div>
       <div class="col-md-6 seConnecter">
-        <a href="">Déjà inscris ? se connecter</a>
+        <a href="">Déjà inscrit ? se connecter</a>
       </div>
     </div>
   </form>

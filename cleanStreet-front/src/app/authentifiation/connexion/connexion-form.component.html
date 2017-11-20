@@ -1,18 +1,43 @@
-<div class="">
-  <form>
-    <div class="form-group">
+<div class="col-md-12 text-center">
+  <h1>CleanStreet</h1>
+  <h2>Signaler, Optimiser, Sensibiliser</h2>
+</div>
+<div class="panel-inscription col-md-8 col-md-offset-2">
+  <form [formGroup]="connexionForm" (ngSubmit)="connexion()" >
 
-    <div class="form-group">
-      <label class="label-login" for="mail">Mail</label>
-      <input type="text" class="form-control" id="mail" required>
-    </div>
+    <div class="col-md-12 col-md-offset-3">
+      <div class="col-md-12">
+        <div class="form-group col-md-6">
+          <input type="text" formControlName="mail" id="mail" class="form-control" [(ngModel)]="formulaire.UCemail" placeholder="Email: xyz@exemple.com" required>
+        </div>
+        <div class="col-md-4">
+          <div *ngIf="UCmail.invalid && (UCmail.dirty || UCmail.touched)" class="tool">
+            <p>Email non renseigné ou invalide</p>
+          </div>
+        </div>
+      </div>
 
-    <div class="form-group">
-      <label class="label-login" for="pass">Mot de passe</label>
-      <input type="text" class="form-control" id="pass" required>
-    </div>
-
-    <a type="submit" href="#signalerDechet" class="waves-effect waves-light btn">Signalez un déchet</a>
+      <div class="col-md-12">
+        <div class="form-group col-md-6">
+          <input type="password" formControlName="pass" id="pass" [(ngModel)]="formulaire.UCpass" class="form-control" placeholder="Mot de passe" required>
+        </div>
+        <div class="col-md-4">
+          <div *ngIf="UCpass.invalid && (UCpass.dirty || UCpass.touched)" class="tool">
+            <p>Mot de passe non renseigné ou invalide</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="col-md-6" style="padding: 0px;">
+          <button type="submit" [disabled]="!connexionForm.valid" id="btn-submit-inscription" class="btn btn-block">s'inscrire !</button>
+        </div>
+      </div>
+      <div class="col-md-6 seConnecter">
+        <a routerLink="/inscription" routerLinkActive>Non inscrit ? s'inscrire</a>
+      </div>
     </div>
   </form>
 </div>
+
+
+

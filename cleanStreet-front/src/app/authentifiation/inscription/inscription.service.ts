@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+
 import {HttpClient} from '@angular/common/http';
+import {User} from '../bean/user';
 
 @Injectable()
 export class InscriptionService {
 
-  private headers = new Headers({'Content-Type': 'application/json'});
   private inscriptionUrl = 'api/inscription';
 
   constructor(private _http: HttpClient) {
@@ -13,13 +13,12 @@ export class InscriptionService {
   }
 
   inscription(nom: string, prenom: string, mail: string,  pass: string) {
-    console.log('nom', nom);
     const body = {
       nom: nom,
       prenom: prenom,
-      mail: mail,
-      pass: pass
+      email: mail,
+      motDePasse: pass
     };
-    return this._http.post(this.inscriptionUrl, body);
+    return this._http.post<User>(this.inscriptionUrl, body);
   }
 }

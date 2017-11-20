@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng server --proxy-config proxy.conf.json",
+    "stop": "node server.stop.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

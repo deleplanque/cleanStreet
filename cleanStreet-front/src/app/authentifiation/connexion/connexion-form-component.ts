@@ -1,21 +1,42 @@
 
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserConnexion} from '../bean/userConnexion';
+import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
+import {ConnexionService} from './connexion.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-connexion',
-  templateUrl: './connexion-form.component.html'
+  templateUrl: './connexion-form.component.html',
+  styleUrls: ['../inscription-form.component.css'],
+  providers: [ConnexionService]
 })
 
-export class ConnexionFormComponent {
+export class ConnexionFormComponent implements OnInit {
 
-  model = new UserConnexion('mail', 'pass');
+  connexionForm: FormGroup;
+  formulaire = new UserConnexion('', '');
 
-  submitted = false;
+  constructor(private connexionService: ConnexionService, private router: Router) {}
 
-  onSubmit() { this.submitted = true; }
-
-  newUserInscription() {
-    this.model = new UserConnexion('mail', 'pass');
+  ngOnInit(): void {
+    this.connexionForm = new FormGroup({
+      'UCmail': new FormControl(this.formulaire.UCemail, [Validators.minLength(1)]),
+      'UCpass': new FormControl(this.formulaire.UCpass, [Validators.minLength(1)])
+    });
   }
+
+  connexion(): void {
+    this.connexionService.connexion(this.formulaire.UCemail, this.formulaire.UCpass)
+      .subscribe(data => {
+        console.log('data', data);
+      }, error => {
+        console.log(error);
+      });
+  }
+
+
+  get UCmail() { return this.connexionForm.get('UCmail'); }
+  get UCpass() { return this.connexionForm.get('UCpass'); }
+
 }

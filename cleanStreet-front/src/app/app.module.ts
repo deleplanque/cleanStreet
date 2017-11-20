@@ -10,13 +10,18 @@ import {HttpModule} from '@angular/http';
 import {AppRoutingModule} from './app.routing.module';
 import {AccueilComponent} from './accueil/accueil.component';
 import {HttpClientModule} from '@angular/common/http';
+import {ConnexionService} from './authentifiation/connexion/connexion.service';
+import {SignalerComponent} from './accueil/signaler/signaler.component';
+import {AccueilService} from './accueil/accueil.service';
+import {SignalerService} from './accueil/signaler/signaler.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     InscriptionFormComponent,
     ConnexionFormComponent,
-    AccueilComponent
+    AccueilComponent,
+    SignalerComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +32,10 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    InscriptionService
+    InscriptionService,
+    ConnexionService,
+    AccueilService,
+    SignalerService
   ],
   bootstrap: [AppComponent]
 })
