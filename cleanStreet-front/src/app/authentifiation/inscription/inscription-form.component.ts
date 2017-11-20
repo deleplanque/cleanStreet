@@ -24,11 +24,11 @@ export class InscriptionFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.inscriptionForm = new FormGroup({
-      'nom': new FormControl(this.formulaire.UInom, [Validators.minLength(1)]),
-      'prenom': new FormControl(this.formulaire.UIprenom, [Validators.minLength(1)]),
-      'mail': new FormControl(this.formulaire.UImail, [Validators.minLength(3)]),
-      'pass': new FormControl(this.formulaire.UIpass, [Validators.minLength(3)]),
-      'repetepass': new FormControl(this.formulaire.UIrepetepass, [Validators.minLength(3)])
+      'UInom': new FormControl(this.formulaire.UInom, [Validators.minLength(1)]),
+      'UIprenom': new FormControl(this.formulaire.UIprenom, [Validators.minLength(1)]),
+      'UImail': new FormControl(this.formulaire.UImail, [Validators.minLength(3)]),
+      'UIpass': new FormControl(this.formulaire.UIpass, [Validators.minLength(3)]),
+      'UIrepetepass': new FormControl(this.formulaire.UIrepetepass, [Validators.minLength(3)])
     });
   }
 
@@ -41,10 +41,10 @@ export class InscriptionFormComponent implements OnInit {
       });
   }
 
-  get nom() { return this.inscriptionForm.get('nom'); }
-  get prenom() { return this.inscriptionForm.get('prenom'); }
-  get mail() { return this.inscriptionForm.get('mail'); }
-  get pass() { return this.inscriptionForm.get('pass'); }
-  get repetepass() { return this.inscriptionForm.get('repetepass'); }
+  get UInom() { return this.inscriptionForm.get('UInom'); }
+  get UIprenom() { return this.inscriptionForm.get('UIprenom'); }
+  get UImail() { return this.inscriptionForm.get('UImail'); }
+  get UIpass() { return this.inscriptionForm.get('UIpass'); }
+  get UIrepetepass() { return this.inscriptionForm.get('UIrepetepass'); }
 
 }
