@@ -10,13 +10,11 @@ import {HttpModule} from '@angular/http';
 import {AppRoutingModule} from './app.routing.module';
 import {AccueilComponent} from './accueil/accueil.component';
 import {HttpClientModule} from '@angular/common/http';
-<<<<<<< HEAD
+
 import {ConnexionService} from './authentifiation/connexion/connexion.service';
 import {SignalerComponent} from './accueil/signaler/signaler.component';
 import {AccueilService} from './accueil/accueil.service';
 import {SignalerService} from './accueil/signaler/signaler.service';
-=======
->>>>>>> 3960f9df127d3a642d17d88ac29e86b56a08c993
 
 @NgModule({
   declarations: [

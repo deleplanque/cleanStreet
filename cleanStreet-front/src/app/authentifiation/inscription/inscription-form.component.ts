@@ -32,21 +32,12 @@ export class InscriptionFormComponent implements OnInit {
     });
   }
 
-<<<<<<< HEAD
   inscription(): void {
     this.inscriptionService.inscription(this.formulaire.UInom, this.formulaire.UIprenom, this.formulaire.UImail, this.formulaire.UIpass)
       .subscribe(data => {
         console.log('data', data);
       }, error => {
         console.log(error);
-=======
-  inscription(inscriptionForm: NgForm): void {
-    this.inscriptionService.inscription(this.formulaire.nom, this.formulaire.prenom, this.formulaire.mail, this.formulaire.pass)
-      .subscribe(data => {
-        console.log("data", data);
-      }, error => {
-        console.log("error");
->>>>>>> 3960f9df127d3a642d17d88ac29e86b56a08c993
       });
   }
 

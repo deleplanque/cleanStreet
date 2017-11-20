@@ -1,12 +1,6 @@
 import {Injectable} from '@angular/core';
-<<<<<<< HEAD
-
-import {HttpClient} from '@angular/common/http';
 import {User} from '../bean/user';
-=======
-import {Http} from '@angular/http';
 import {HttpClient} from '@angular/common/http';
->>>>>>> 3960f9df127d3a642d17d88ac29e86b56a08c993
 
 @Injectable()
 export class InscriptionService {
