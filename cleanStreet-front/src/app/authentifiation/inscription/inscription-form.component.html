@@ -8,44 +8,44 @@
     <div class="col-md-12 col-md-offset-3">
       <div class="col-md-12 col-sm-6">
         <div class="form-group col-md-3">
-          <input id="nom" formControlName="nom"  class="form-control" [(ngModel)]="formulaire.UInom" placeholder="Nom" required>
+          <input id="nom" formControlName="UInom"  class="form-control" [(ngModel)]="formulaire.UInom" placeholder="Nom" required>
         </div>
         <div class="form-group col-md-3">
-          <input id="prenom" formControlName="prenom" class="form-control" [(ngModel)]="formulaire.UIprenom" placeholder="Prénom" required>
+          <input id="prenom" formControlName="UIprenom" class="form-control" [(ngModel)]="formulaire.UIprenom" placeholder="Prénom" required>
         </div>
         <div class="col-md-4">
-          <div *ngIf="nom.invalid && (nom.dirty || nom.touched) || prenom.invalid && (prenom.dirty || prenom.touched)" class="tool">
+          <div *ngIf="UInom.invalid && (UInom.dirty || UInom.touched) || UIprenom.invalid && (UIprenom.dirty || UIprenom.touched)" class="tool">
             <p>Nom ou prénom non renseigné</p>
           </div>
         </div>
       </div>
       <div class="col-md-12">
         <div class="form-group col-md-6">
-          <input type="text" formControlName="mail" id="mail" class="form-control" [(ngModel)]="formulaire.UImail" placeholder="Email: xyz@exemple.com" required>
+          <input type="text" formControlName="UImail" id="UImail" class="form-control" [(ngModel)]="formulaire.UImail" placeholder="Email: xyz@exemple.com" required>
         </div>
         <div class="col-md-4">
-          <div *ngIf="mail.invalid && (mail.dirty || mail.touched)" class="tool">
-            <a routerLink="/connexion" routerLinkActive>Email non renseigné ou invalide</a>
+          <div *ngIf="UImail.invalid && (UImail.dirty || UImail.touched)" class="tool">
+            <p>Email non renseigné ou invalide</p>
           </div>
         </div>
       </div>
 
       <div class="col-md-12">
         <div class="form-group col-md-6">
-          <input type="password" formControlName="pass" id="pass" [(ngModel)]="formulaire.UIpass" class="form-control" placeholder="Mot de passe" required>
+          <input type="password" formControlName="UIpass" id="pass" [(ngModel)]="formulaire.UIpass" class="form-control" placeholder="Mot de passe" required>
         </div>
         <div class="col-md-4">
-          <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="tool">
+          <div *ngIf="UIpass.invalid && (UIpass.dirty || UIpass.touched)" class="tool">
             <p>Mot de passe non renseigné ou invalide</p>
           </div>
         </div>
       </div>
       <div class="col-md-12">
         <div class="form-group col-md-6">
-          <input type="password" formControlName="repetepass" id="repetepass" [(ngModel)]="formulaire.UIrepetepass" class="form-control" placeholder="Mot de passe" required>
+          <input type="password" formControlName="UIrepetepass" id="repetepass" [(ngModel)]="formulaire.UIrepetepass" class="form-control" placeholder="Mot de passe" required>
         </div>
         <div class="col-md-4">
-          <div *ngIf="repetepass.invalid && (repetepass.dirty || repetepass.touched)" class="tool">
+          <div *ngIf="UIrepetepass.invalid && (UIrepetepass.dirty || UIrepetepass.touched)" class="tool">
             <p>Le mot de passe est différent</p>
           </div>
         </div>
@@ -57,7 +57,7 @@
             </div>
         </div>
       <div class="col-md-6 seConnecter">
-        <a href="">Déjà inscrit ? se connecter</a>
+        <a href="" routerLink="/connexion" routerLinkActive>Déjà inscrit ? se connecter</a>
       </div>
     </div>
   </form>

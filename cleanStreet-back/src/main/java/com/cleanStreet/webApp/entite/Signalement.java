@@ -3,11 +3,9 @@ package com.cleanStreet.webApp.entite;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -28,7 +26,6 @@ public class Signalement implements Serializable{
 	private int indiceDeProprete;
 
 	@ManyToOne
-//	@JoinColumn(name = "utilisateurs_id")
 	private Utilisateur proprietaire;
 
 	public Signalement(){}

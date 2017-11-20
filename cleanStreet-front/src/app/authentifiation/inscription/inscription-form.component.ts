@@ -41,10 +41,10 @@ export class InscriptionFormComponent implements OnInit {
       });
   }
 
-  get nom() { return this.inscriptionForm.get('nom'); }
-  get prenom() { return this.inscriptionForm.get('prenom'); }
-  get mail() { return this.inscriptionForm.get('mail'); }
-  get pass() { return this.inscriptionForm.get('pass'); }
-  get repetepass() { return this.inscriptionForm.get('repetepass'); }
+  get UInom() { return this.inscriptionForm.get('UInom'); }
+  get UIprenom() { return this.inscriptionForm.get('UIprenom'); }
+  get UImail() { return this.inscriptionForm.get('UImail'); }
+  get UIpass() { return this.inscriptionForm.get('UIpass'); }
+  get UIrepetepass() { return this.inscriptionForm.get('UIrepetepass'); }
 
 }
