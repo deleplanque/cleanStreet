@@ -42,4 +42,15 @@ public class SignalementControlleur {
 		return new ResponseEntity<List<Signalement>>(signalementService.getSignalementParQuartier(quartier), HttpStatus.FOUND);
 	}
 
+	@RequestMapping(value="/supprimerSignalement", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Void> supprimerSignalement(@RequestParam(value="id") int id){
+		signalementService.supprimerSignalement(id);
+		return new ResponseEntity<Void>(HttpStatus.OK);
+	}
+
+	@RequestMapping(value="/afficheSignalementParIdUtilisateur", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Signalement>> afficheSignalementParIdUtilisateur(@RequestParam(value="id") int id){
+		return new ResponseEntity<List<Signalement>>(signalementService.afficheSignalementParIdUtilisateur(id), HttpStatus.FOUND);
+	}
+
 }
