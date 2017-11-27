@@ -8,7 +8,7 @@
     <div class="col-md-12 col-md-offset-3">
       <div class="col-md-12">
         <div class="form-group col-md-6">
-          <input type="text" formControlName="mail" id="mail" class="form-control" [(ngModel)]="formulaire.UCemail" placeholder="Email: xyz@exemple.com" required>
+          <input type="text" formControlName="UCmail" id="mail" class="form-control" [(ngModel)]="formulaire.UCemail" placeholder="Email: xyz@exemple.com" required>
         </div>
         <div class="col-md-4">
           <div *ngIf="UCmail.invalid && (UCmail.dirty || UCmail.touched)" class="tool">
@@ -19,7 +19,7 @@
 
       <div class="col-md-12">
         <div class="form-group col-md-6">
-          <input type="password" formControlName="pass" id="pass" [(ngModel)]="formulaire.UCpass" class="form-control" placeholder="Mot de passe" required>
+          <input type="password" formControlName="UCpass" id="pass" [(ngModel)]="formulaire.UCpass" class="form-control" placeholder="Mot de passe" required>
         </div>
         <div class="col-md-4">
           <div *ngIf="UCpass.invalid && (UCpass.dirty || UCpass.touched)" class="tool">
@@ -29,7 +29,7 @@
       </div>
       <div class="col-md-12">
         <div class="col-md-6" style="padding: 0px;">
-          <button type="submit" [disabled]="!connexionForm.valid" id="btn-submit-inscription" class="btn btn-block">s'inscrire !</button>
+          <button type="submit" [disabled]="!connexionForm.valid" id="btn-submit-inscription" class="btn btn-block btn-primary">Connexion !</button>
         </div>
       </div>
       <div class="col-md-6 seConnecter">
