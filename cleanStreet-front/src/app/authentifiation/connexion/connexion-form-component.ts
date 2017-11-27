@@ -29,7 +29,7 @@ export class ConnexionFormComponent implements OnInit {
   connexion(): void {
     this.connexionService.connexion(this.formulaire.UCemail, this.formulaire.UCpass)
       .subscribe(data => {
-        console.log('data', data);
+        this.router.navigate(['accueil']);
       }, error => {
         console.log(error);
       });

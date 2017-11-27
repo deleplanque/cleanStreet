@@ -34,12 +34,12 @@ public class SignalementControlleur {
 
 	@RequestMapping(value="/afficheSignalement", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Signalement>> getSignalement(){
-		return new ResponseEntity<List<Signalement>>(signalementService.getSignalement(), HttpStatus.FOUND);
+		return new ResponseEntity<List<Signalement>>(signalementService.getSignalement(), HttpStatus.OK);
 	}
 
 	@RequestMapping(value="/afficheSignalementParQuartier", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Signalement>> getSignalementParQuartier(@RequestParam(value="quartier") String quartier){
-		return new ResponseEntity<List<Signalement>>(signalementService.getSignalementParQuartier(quartier), HttpStatus.FOUND);
+		return new ResponseEntity<List<Signalement>>(signalementService.getSignalementParQuartier(quartier), HttpStatus.OK);
 	}
 
 }
