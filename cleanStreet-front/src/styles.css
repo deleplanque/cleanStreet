@@ -5,13 +5,7 @@ html{
   background-size: cover; /* version standardisÃ©e */
 }
 
-.btn, .btn-large {
-  background-color: #1e88e5;
-}
 
-.btn:hover, .btn-large:hover {
-  background-color: #2196f3;
-}
 .input-field label{
   color:#42a5f5;
 }
@@ -23,5 +17,15 @@ input[type="range"] + .thumb{
 .label-login{
   font-size: 1.3rem;
   color: #1e88e5;
+}
+
+.navbar{
+  border: none;
+  background-color: #1565c0;
+  border-radius: 0px;
+}
+
+.navbar a{
+  color: white;
 }
 
