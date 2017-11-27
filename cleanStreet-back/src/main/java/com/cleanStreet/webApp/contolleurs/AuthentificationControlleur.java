@@ -37,7 +37,7 @@ public class AuthentificationControlleur {
 		if (u == null) {
 			return new ResponseEntity<Utilisateur>(HttpStatus.CONFLICT);
 		}
-		return new ResponseEntity<Utilisateur>(new Utilisateur(u.getId(), u.getNom(), u.getPrenom(), u.getEmail(),u.getSignalements()), HttpStatus.FOUND);
+		return new ResponseEntity<Utilisateur>(new Utilisateur(u.getId(), u.getNom(), u.getPrenom(), u.getEmail(),u.getSignalements()), HttpStatus.OK);
 	}
 
 }
