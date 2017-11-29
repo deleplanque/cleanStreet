@@ -22,6 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<docker.image.prefix>springio</docker.image.prefix>
 	</properties>
 
 	<dependencies>
@@ -112,6 +113,27 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.15.3</version>
+				<configuration>
+					<dockerHost>http://127.0.0.1:2375</dockerHost>
+					<verbose>true</verbose>
+					<images>
+						<image>
+							<name>springframeworkguru/masteringthymeleaf</name>
+							<build>
+								<dockerFile>Dockerfile</dockerFile>
+								<assembly>
+									<descriptorRef>artifact</descriptorRef>
+								</assembly>
+							</build>
+						</image>
+					</images>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 
