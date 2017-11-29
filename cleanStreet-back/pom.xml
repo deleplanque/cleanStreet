@@ -114,21 +114,26 @@
 				</executions>
 			</plugin>
 			<plugin>
-            <groupId>com.spotify</groupId>
-            <artifactId>docker-maven-plugin</artifactId>
-            <version>0.2.3</version>
-            <configuration>
-                <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-                <dockerDirectory>src/main/docker</dockerDirectory>
-                <resources>
-                    <resource>
-                        <targetPath>/</targetPath>
-                        <directory>${project.build.directory}</directory>
-                        <include>${project.build.finalName}.jar</include>
-                    </resource>
-                </resources>
-            </configuration>
-        </plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.15.3</version>
+				<configuration>
+					<dockerHost>http://127.0.0.1:2375</dockerHost>
+					<verbose>true</verbose>
+					<images>
+						<image>
+							<name>springframeworkguru/masteringthymeleaf</name>
+							<build>
+								<dockerFile>Dockerfile</dockerFile>
+								<assembly>
+									<descriptorRef>artifact</descriptorRef>
+								</assembly>
+							</build>
+						</image>
+					</images>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 
