@@ -26,8 +26,18 @@ public class SignalementService implements ISignalementService{
 
 	@Override
 	public List<Signalement> getSignalementParQuartier(String quartier) {
-		// TODO Auto-generated method stub
 		return signalementDAO.findByQuartier(quartier);
+	}
+
+	@Override
+	public void supprimerSignalement(int id) {
+		Signalement s = signalementDAO.findById(id);
+		signalementDAO.delete(s);
+	}
+
+	@Override
+	public List<Signalement> afficheSignalementParIdUtilisateur(int id) {
+		return signalementDAO.findByProprietaireId(id);
 	}
 
 }

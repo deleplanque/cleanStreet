@@ -1,5 +1,5 @@
 ///<reference path="../../../../node_modules/@angular/core/src/metadata/directives.d.ts"/>
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SignalerService} from './signaler.service';
 
 @Component ({
@@ -8,7 +8,9 @@ import {SignalerService} from './signaler.service';
   styleUrls: ['../accueil.component.css'],
   providers: [SignalerService]
 })
-export class SignalerComponent {
+export class SignalerComponent implements OnInit {
 
+  ngOnInit(): void {
 
+  }
 }

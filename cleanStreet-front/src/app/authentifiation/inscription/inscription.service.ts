@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
-
-import {HttpClient} from '@angular/common/http';
 import {User} from '../bean/user';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class InscriptionService {
@@ -13,6 +12,7 @@ export class InscriptionService {
   }
 
   inscription(nom: string, prenom: string, mail: string,  pass: string) {
+    console.log('nom', nom);
     const body = {
       nom: nom,
       prenom: prenom,

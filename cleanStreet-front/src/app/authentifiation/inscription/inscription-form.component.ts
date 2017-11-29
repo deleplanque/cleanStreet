@@ -24,11 +24,11 @@ export class InscriptionFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.inscriptionForm = new FormGroup({
-      'nom': new FormControl(this.formulaire.UInom, [Validators.minLength(1)]),
-      'prenom': new FormControl(this.formulaire.UIprenom, [Validators.minLength(1)]),
-      'mail': new FormControl(this.formulaire.UImail, [Validators.minLength(3)]),
-      'pass': new FormControl(this.formulaire.UIpass, [Validators.minLength(3)]),
-      'repetepass': new FormControl(this.formulaire.UIrepetepass, [Validators.minLength(3)])
+      'UInom': new FormControl(this.formulaire.UInom, [Validators.minLength(1)]),
+      'UIprenom': new FormControl(this.formulaire.UIprenom, [Validators.minLength(1)]),
+      'UImail': new FormControl(this.formulaire.UImail, [Validators.minLength(3)]),
+      'UIpass': new FormControl(this.formulaire.UIpass, [Validators.minLength(3)]),
+      'UIrepetepass': new FormControl(this.formulaire.UIrepetepass, [Validators.minLength(3)])
     });
   }
 

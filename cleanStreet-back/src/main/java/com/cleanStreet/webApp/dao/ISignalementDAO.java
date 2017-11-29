@@ -10,4 +10,8 @@ public interface ISignalementDAO extends JpaRepository<Signalement, Long>{
 
 	List<Signalement> findByQuartier(String quartier);
 
+	Signalement findById(int id);
+
+	List<Signalement> findByProprietaireId(int id);
+
 }

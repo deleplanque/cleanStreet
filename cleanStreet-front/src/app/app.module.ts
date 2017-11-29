@@ -10,10 +10,17 @@ import {HttpModule} from '@angular/http';
 import {AppRoutingModule} from './app.routing.module';
 import {AccueilComponent} from './accueil/accueil.component';
 import {HttpClientModule} from '@angular/common/http';
+
 import {ConnexionService} from './authentifiation/connexion/connexion.service';
 import {SignalerComponent} from './accueil/signaler/signaler.component';
 import {AccueilService} from './accueil/accueil.service';
 import {SignalerService} from './accueil/signaler/signaler.service';
+import {AgmCoreModule} from 'angular2-google-maps/core';
+
+const googleMapsCore = AgmCoreModule.forRoot({
+  apiKey : 'AIzaSyBRE007XGmvUwlz5hKvbBDA3URhxmqBAHM',
+});
+
 
 @NgModule({
   declarations: [
@@ -29,7 +36,8 @@ import {SignalerService} from './accueil/signaler/signaler.service';
     HttpModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    googleMapsCore
   ],
   providers: [
     InscriptionService,

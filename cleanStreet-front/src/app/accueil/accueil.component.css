@@ -3,6 +3,7 @@ html{
   -webkit-background-size: cover; /* pour anciens Chrome et Safari */
   background-size: cover; /* version standardisÃ©e */
   color: white;
+  background-color: #ffffff;
 }
 body{
   background-color: rgba(0,0,0,0);

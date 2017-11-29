@@ -9,5 +9,7 @@ public interface ISignalementService {
 	Signalement ajouterSignalement(Signalement signalement);
 	List<Signalement> getSignalement();
 	List<Signalement> getSignalementParQuartier(String quartier);
+	void supprimerSignalement(int id);
+	List<Signalement> afficheSignalementParIdUtilisateur(int id);
 
 }
