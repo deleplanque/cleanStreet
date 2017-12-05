@@ -36,6 +36,7 @@ export class InscriptionFormComponent implements OnInit {
     this.inscriptionService.inscription(this.formulaire.UInom, this.formulaire.UIprenom, this.formulaire.UImail, this.formulaire.UIpass)
       .subscribe(data => {
         console.log('data', data);
+        this.connexionService.connexion(this.formulaire.UImail, this.formulaire.UIpass);
       }, error => {
         console.log(error);
       });

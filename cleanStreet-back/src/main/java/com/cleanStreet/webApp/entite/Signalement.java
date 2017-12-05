@@ -2,11 +2,14 @@ package com.cleanStreet.webApp.entite;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 
 @Entity
 public class Signalement implements Serializable{
@@ -19,10 +22,15 @@ public class Signalement implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private String quartier;
+
+	@ManyToOne
+	private Quartier quartier;
 	private String description;
 	private String photo;
-	private String localisation;
+
+	@OneToOne(cascade=CascadeType.ALL)
+	private Localisation localisation;
+
 	private int indiceDeProprete;
 
 	@ManyToOne
@@ -30,7 +38,7 @@ public class Signalement implements Serializable{
 
 	public Signalement(){}
 
-	public Signalement(String quartier,String description, String photo, String localisation, int indiceDeProprete, Utilisateur utilisateur){
+	public Signalement(Quartier quartier,String description, String photo, Localisation localisation, int indiceDeProprete, Utilisateur utilisateur){
 		this.quartier = quartier;
 		this.description = description;
 		this.photo = photo;
@@ -47,11 +55,11 @@ public class Signalement implements Serializable{
 		this.id = id;
 	}
 
-	public String getQuartier() {
+	public Quartier getQuartier() {
 		return quartier;
 	}
 
-	public void setQuartier(String quartier) {
+	public void setQuartier(Quartier quartier) {
 		this.quartier = quartier;
 	}
 
@@ -63,11 +71,11 @@ public class Signalement implements Serializable{
 		this.photo = photo;
 	}
 
-	public String getLocalisation() {
+	public Localisation getLocalisation() {
 		return localisation;
 	}
 
-	public void setLocalisation(String localisation) {
+	public void setLocalisation(Localisation localisation) {
 		this.localisation = localisation;
 	}
 
