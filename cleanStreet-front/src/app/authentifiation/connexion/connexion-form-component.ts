@@ -29,12 +29,8 @@ export class ConnexionFormComponent implements OnInit {
   connexion(): void {
     this.connexionService.connexion(this.formulaire.UCemail, this.formulaire.UCpass)
       .subscribe(data => {
-<<<<<<< HEAD
-        this.router.navigate(['accueil']);
-=======
         console.log('data', data);
         this.router.navigate(['/accueil']);
->>>>>>> 0000004fonc-gestionSignalement
       }, error => {
         console.log(error);
       });
