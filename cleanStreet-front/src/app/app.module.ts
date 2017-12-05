@@ -15,10 +15,11 @@ import {ConnexionService} from './authentifiation/connexion/connexion.service';
 import {SignalerComponent} from './accueil/signaler/signaler.component';
 import {AccueilService} from './accueil/accueil.service';
 import {SignalerService} from './accueil/signaler/signaler.service';
-import {AgmCoreModule} from 'angular2-google-maps/core';
+import {AgmCoreModule} from '@agm/core';
+
 
 const googleMapsCore = AgmCoreModule.forRoot({
-  apiKey : 'AIzaSyBRE007XGmvUwlz5hKvbBDA3URhxmqBAHM',
+  apiKey : 'AIzaSyCPoOajyOD44_Dwie5XRMofsEDKoM7JMrs',
 });
 
 

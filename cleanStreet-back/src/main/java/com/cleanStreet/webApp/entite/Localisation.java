@@ -2,10 +2,13 @@ package com.cleanStreet.webApp.entite;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Localisation implements Serializable{
@@ -19,12 +22,18 @@ public class Localisation implements Serializable{
 	private int id;
 	private double latitude;
 	private double longitude;
+	@ManyToOne
 	private Quartier quartier;
 
-	public Localisation(double latitude, double longitude, Quartier quartier) {
+//	@OneToOne
+//	private Signalement signalement;
+
+	public Localisation() {
+	}
+
+	public Localisation(double latitude, double longitude) {
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.quartier = quartier;
 	}
 
 	public double getLatitude() {

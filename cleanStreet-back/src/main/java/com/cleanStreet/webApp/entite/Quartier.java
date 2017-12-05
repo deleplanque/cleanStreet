@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Quartier implements Serializable{
 
@@ -21,11 +23,20 @@ public class Quartier implements Serializable{
 	private String nom;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="quartier", cascade = CascadeType.ALL)
-	private List<Localisation> listeLcocalisation;
+	@JsonIgnore
+	private List<Signalement> listSignalements;
 
-	public Quartier(String nom, List<Localisation> listeLcocalisation) {
+	public Quartier() {
+	}
+
+	public Quartier(int id, String nom){
+		this.id = id;
 		this.nom = nom;
-		this.listeLcocalisation = listeLcocalisation;
+	}
+
+	public Quartier(String nom, List<Signalement> listSignalements) {
+		this.nom = nom;
+		this.listSignalements = listSignalements;
 	}
 
 	public int getId() {
@@ -40,10 +51,13 @@ public class Quartier implements Serializable{
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	public List<Localisation> getListeLcocalisation() {
-		return listeLcocalisation;
+
+	public List<Signalement> getListSignalements() {
+		return listSignalements;
 	}
-	public void setListeLcocalisation(List<Localisation> listeLcocalisation) {
-		this.listeLcocalisation = listeLcocalisation;
+
+	public void setListSignalements(List<Signalement> listSignalements) {
+		this.listSignalements = listSignalements;
 	}
+
 }
