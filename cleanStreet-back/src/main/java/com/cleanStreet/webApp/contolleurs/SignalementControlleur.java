@@ -23,7 +23,7 @@ public class SignalementControlleur {
 	ISignalementService signalementService;
 
 	@RequestMapping(value = "/ajouterSignalement", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Signalement> inscription(@RequestBody Signalement signalement) {
+	public ResponseEntity<Signalement> ajouterSignalement(@RequestBody Signalement signalement) {
 
 		Signalement s = signalementService.ajouterSignalement(signalement);
 		if (s == null) {
@@ -40,6 +40,8 @@ public class SignalementControlleur {
 	@RequestMapping(value="/afficheSignalementParQuartier", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Signalement>> getSignalementParQuartier(@RequestParam(value="quartier") String quartier){
 		return new ResponseEntity<List<Signalement>>(signalementService.getSignalementParQuartier(quartier), HttpStatus.OK);
+<<<<<<< HEAD
+=======
 	}
 
 	@RequestMapping(value="/supprimerSignalement", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -50,7 +52,8 @@ public class SignalementControlleur {
 
 	@RequestMapping(value="/afficheSignalementParIdUtilisateur", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Signalement>> afficheSignalementParIdUtilisateur(@RequestParam(value="id") int id){
-		return new ResponseEntity<List<Signalement>>(signalementService.afficheSignalementParIdUtilisateur(id), HttpStatus.FOUND);
+		return new ResponseEntity<List<Signalement>>(signalementService.afficheSignalementParIdUtilisateur(id), HttpStatus.OK);
+>>>>>>> 0000004fonc-gestionSignalement
 	}
 
 }

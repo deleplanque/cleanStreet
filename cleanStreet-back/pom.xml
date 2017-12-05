@@ -6,7 +6,10 @@
 	<groupId>com.cleanStreet</groupId>
 	<artifactId>webApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+<<<<<<< HEAD
 	<packaging>jar</packaging>
+=======
+>>>>>>> develop
 
 	<name>WebApp</name>
 	<description>Projet cleanStreet </description>

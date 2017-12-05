@@ -29,3 +29,35 @@ input[type="range"] + .thumb{
   color: white;
 }
 
+<<<<<<< HEAD
+=======
+footer{
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 2px 2px 2px 2px;
+  color: black;
+  text-align: center;
+  margin-top: 30px;
+  padding: 30px;
+}
+
+footer .glyphicon{
+  color: #1e88e5;
+  font-size: 50px;
+}
+
+footer .promo-caption{
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+footer .light{
+  color: darkgrey;
+  font-style: italic;
+}
+
+body{
+  background-color: rgba(0,0,0,0);
+}
+>>>>>>> 0000004fonc-gestionSignalement
