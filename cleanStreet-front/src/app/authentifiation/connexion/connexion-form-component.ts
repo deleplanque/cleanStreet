@@ -4,6 +4,8 @@ import {UserConnexion} from '../bean/userConnexion';
 import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import {ConnexionService} from './connexion.service';
 import {Router} from '@angular/router';
+import {User} from '../bean/user';
+import {AlertService} from '../../alert/_services/alert.service';
 
 @Component({
   selector: 'app-connexion',
@@ -16,8 +18,9 @@ export class ConnexionFormComponent implements OnInit {
 
   connexionForm: FormGroup;
   formulaire = new UserConnexion('', '');
+  utilisateur: User;
 
-  constructor(private connexionService: ConnexionService, private router: Router) {}
+  constructor(private connexionService: ConnexionService, private router: Router, private alertService: AlertService) {}
 
   ngOnInit(): void {
     this.connexionForm = new FormGroup({
@@ -29,14 +32,10 @@ export class ConnexionFormComponent implements OnInit {
   connexion(): void {
     this.connexionService.connexion(this.formulaire.UCemail, this.formulaire.UCpass)
       .subscribe(data => {
-<<<<<<< HEAD
-        this.router.navigate(['accueil']);
-=======
-        console.log('data', data);
+        sessionStorage.setItem('utilisateur', JSON.stringify(data));
         this.router.navigate(['/accueil']);
->>>>>>> 0000004fonc-gestionSignalement
       }, error => {
-        console.log(error);
+        this.alertService.error('Identifiant incorectes', false);
       });
   }
 

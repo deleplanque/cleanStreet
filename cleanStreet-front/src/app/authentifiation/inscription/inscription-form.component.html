@@ -2,53 +2,54 @@
   <h1>CleanStreet</h1>
   <h2>Signaler, Optimiser, Sensibiliser</h2>
 </div>
-<div class="panel-inscription col-md-8 col-md-offset-2">
+<div class="panel-inscription col-md-10 col-md-offset-2">
   <form [formGroup]="inscriptionForm" (ngSubmit)="inscription()" >
 
-    <div class="col-md-12 col-md-offset-3">
-      <div class="col-md-12 col-sm-6">
-        <div class="form-group col-md-3">
+    <div class="col-md-11 col-md-offset-2">
+      <div class="col-md-6"><app-alert></app-alert></div>
+      <div class="col-lg-12 col-md-12 col-sm-6 col-sm-offset-3 col-md-offset-0 col-lg-offset-0 ">
+        <div class="form-group col-lg-3 col-md-3 col-sm-6">
           <input id="nom" formControlName="UInom"  class="form-control" [(ngModel)]="formulaire.UInom" placeholder="Nom" required>
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-3 col-sm-6">
           <input id="prenom" formControlName="UIprenom" class="form-control" [(ngModel)]="formulaire.UIprenom" placeholder="Prénom" required>
         </div>
-        <div class="col-md-4">
+        <!--<div class="col-md-4 col-sm-0 col-xs-0">
           <div *ngIf="UInom.invalid && (UInom.dirty || UInom.touched) || UIprenom.invalid && (UIprenom.dirty || UIprenom.touched)" class="tool">
             <p>Nom ou prénom non renseigné</p>
           </div>
-        </div>
+        </div>-->
       </div>
       <div class="col-md-12">
         <div class="form-group col-md-6">
           <input type="text" formControlName="UImail" id="UImail" class="form-control" [(ngModel)]="formulaire.UImail" placeholder="Email: xyz@exemple.com" required>
         </div>
-        <div class="col-md-4">
+        <!--<div class="col-md-4">
           <div *ngIf="UImail.invalid && (UImail.dirty || UImail.touched)" class="tool">
             <p>Email non renseigné ou invalide</p>
           </div>
-        </div>
+        </div>-->
       </div>
 
       <div class="col-md-12">
         <div class="form-group col-md-6">
           <input type="password" formControlName="UIpass" id="pass" [(ngModel)]="formulaire.UIpass" class="form-control" placeholder="Mot de passe" required>
         </div>
-        <div class="col-md-4">
+       <!-- <div class="col-md-4">
           <div *ngIf="UIpass.invalid && (UIpass.dirty || UIpass.touched)" class="tool">
             <p>Mot de passe non renseigné ou invalide</p>
           </div>
-        </div>
+        </div>-->
       </div>
       <div class="col-md-12">
         <div class="form-group col-md-6">
           <input type="password" formControlName="UIrepetepass" id="repetepass" [(ngModel)]="formulaire.UIrepetepass" class="form-control" placeholder="Mot de passe" required>
         </div>
-        <div class="col-md-4">
+       <!-- <div class="col-md-4">
           <div *ngIf="UIrepetepass.invalid && (UIrepetepass.dirty || UIrepetepass.touched)" class="tool">
             <p>Le mot de passe est différent</p>
           </div>
-        </div>
+        </div>-->
       </div>
 
         <div class="col-md-12">
@@ -57,20 +58,9 @@
             </div>
         </div>
       <div class="col-md-6 seConnecter">
-<<<<<<< HEAD
 
         <a href="" routerLink="/connexion" routerLinkActive>Déjà inscrit ? Se connecter</a>
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <a href="" routerLink="/connexion" routerLinkActive>Déjà inscrit ? Se connecter</a>
-=======
-        <a routerLink="/connexion" routerLinkActive>Déjà inscrit ? Se connecter</a>
->>>>>>> 0000004fonc-gestionSignalement
-=======
-        <a routerLink="/connexion" routerLinkActive>Déjà inscrit ? Se connecter</a>
->>>>>>> 0000004fonc-gestionSignalement
->>>>>>> develop
+
       </div>
     </div>
   </form>

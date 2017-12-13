@@ -15,18 +15,17 @@ import {ConnexionService} from './authentifiation/connexion/connexion.service';
 import {SignalerComponent} from './accueil/signaler/signaler.component';
 import {AccueilService} from './accueil/accueil.service';
 import {SignalerService} from './accueil/signaler/signaler.service';
-<<<<<<< HEAD
-import {AgmCoreModule} from 'angular2-google-maps/core';
 
-const googleMapsCore = AgmCoreModule.forRoot({
-  apiKey : 'AIzaSyBRE007XGmvUwlz5hKvbBDA3URhxmqBAHM',
-=======
 import {AgmCoreModule} from '@agm/core';
+import {OptimiserComponent} from './accueil/optimiser/optimiser.component';
+import {AlertComponent} from './alert/_directives/alert.component';
+import {OptimiserService} from './accueil/optimiser/optimiser.service';
+import {AlertService} from './alert/_services/alert.service';
 
 
 const googleMapsCore = AgmCoreModule.forRoot({
   apiKey : 'AIzaSyCPoOajyOD44_Dwie5XRMofsEDKoM7JMrs',
->>>>>>> 0000004fonc-gestionSignalement
+  libraries: ['places']
 });
 
 
@@ -36,7 +35,9 @@ const googleMapsCore = AgmCoreModule.forRoot({
     InscriptionFormComponent,
     ConnexionFormComponent,
     AccueilComponent,
-    SignalerComponent
+    SignalerComponent,
+    OptimiserComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +52,9 @@ const googleMapsCore = AgmCoreModule.forRoot({
     InscriptionService,
     ConnexionService,
     AccueilService,
-    SignalerService
+    SignalerService,
+    OptimiserService,
+    AlertService
   ],
   bootstrap: [AppComponent]
 })
