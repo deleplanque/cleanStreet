@@ -1,33 +1,33 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
 import { AppComponent } from './app.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InscriptionFormComponent} from './authentifiation/inscription/inscription-form.component';
 import {ConnexionFormComponent} from './authentifiation/connexion/connexion-form-component';
-import {InscriptionService} from './authentifiation/inscription/inscription.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
-import {AppRoutingModule} from './app.routing.module';
-import {AccueilComponent} from './accueil/accueil.component';
 import {HttpClientModule} from '@angular/common/http';
-
+import {AppRoutingModule} from './app.routing.module';
+import {AgmCoreModule} from '@agm/core';
+import {AlertComponent} from './alert/_directives/alert.component';
+import {InscriptionService} from './authentifiation/inscription/inscription.service';
 import {ConnexionService} from './authentifiation/connexion/connexion.service';
-import {SignalerComponent} from './accueil/signaler/signaler.component';
+import {AlertService} from './alert/_services/alert.service';
 import {AccueilService} from './accueil/accueil.service';
 import {SignalerService} from './accueil/signaler/signaler.service';
-
-import {AgmCoreModule} from '@agm/core';
-import {OptimiserComponent} from './accueil/optimiser/optimiser.component';
-import {AlertComponent} from './alert/_directives/alert.component';
-import {OptimiserService} from './accueil/optimiser/optimiser.service';
-import {AlertService} from './alert/_services/alert.service';
+import {OptimiserService} from './optimiser/optimiser.service';
+import {SignalerComponent} from './accueil/signaler/signaler.component';
+import {AccueilComponent} from './accueil/accueil.component';
+import {OptimiserComponent} from './optimiser/optimiser.component';
+import {EnteteComponent} from "./miseEnPage/entete/entete.component";
+import {PiedDePageComponent} from "./miseEnPage/piedDePage/piedDePage.component";
 
 
 const googleMapsCore = AgmCoreModule.forRoot({
   apiKey : 'AIzaSyCPoOajyOD44_Dwie5XRMofsEDKoM7JMrs',
   libraries: ['places']
 });
-
 
 @NgModule({
   declarations: [
@@ -38,6 +38,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
     SignalerComponent,
     OptimiserComponent,
     AlertComponent,
+    EnteteComponent,
+    PiedDePageComponent
   ],
   imports: [
     BrowserModule,
@@ -54,9 +56,7 @@ const googleMapsCore = AgmCoreModule.forRoot({
     AccueilService,
     SignalerService,
     OptimiserService,
-    AlertService
-  ],
+    AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
