@@ -1,9 +1,8 @@
 
 import {Component, OnInit} from '@angular/core';
 import {OptimiserService} from './optimiser.service';
-import {SignalerService} from '../signaler/signaler.service';
-import {AccueilService} from '../accueil.service';
-import {Signalement} from '../Bean/signalement';
+import {Signalement} from '../accueil/Bean/signalement';
+import {AccueilService} from '../accueil/accueil.service';
 
 @Component ({
   selector: 'app-optimiser',
