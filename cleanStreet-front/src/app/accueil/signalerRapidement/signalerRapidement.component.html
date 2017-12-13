@@ -7,25 +7,22 @@
     <h3>Signalez un lieu sale  </h3>
   </div>
   <div class="col-md-6">
-    <form [formGroup]="signalerForm" (ngSubmit)="signaler()" >
+    <form >
       <div class="form-group">
         <label class="control-label" for="description">Description:</label>
-        <textarea type="text" class="form-control" rows="5" id="description" formControlName="description" [(ngModel)]="formulaire.description"></textarea>
+        <textarea class="form-control" rows="5" id="description"></textarea>
       </div>
       <div class="form-group">
         <label class="control-label" for="indice">Indice de propreté:</label>
-          <input type="range" id="indice" formControlName="indiceDeProprete" [(ngModel)]="formulaire.indiceDeProprete" min="0" max="10" />
+          <input type="range" id="indice" min="0" max="10" />
       </div>
       <div class="form-group">
         <label class="control-label" for="photo">Photo:</label>
-        <input type="file" id="photo" formControlName="image" [(ngModel)]="formulaire.image" capture="camera" accept="image/*"  style="visibility:hidden" (change)="displayPhoto($event)">
+        <input type="file" id="photo" capture="camera" accept="image/*"  style="visibility:hidden" (change)="displayPhoto($event)">
         <button class="btn btn-primary btn-md" onclick="$('#photo').click();">Ajouter une photo</button>
         <div class="col-md-8 col-md-offset-2">
           <img [src]="imageSrc" class="img-responsive" id="preview" alt=""/>
         </div>
-      </div>
-      <div class="col-md-4 col-md-offset-4">
-        <button type="submit" class="btn btn-primary btn-block btn-submit">Soumettre</button>
       </div>
     </form>
   </div>
@@ -35,4 +32,7 @@
         <agm-marker *ngFor="let signalement of signalements" [latitude]="signalement.localisation.latitude" [longitude]="signalement.localisation.longitude"></agm-marker>
       </agm-map>
     </div>
+  <div class="col-md-4 col-md-offset-4">
+    <button class="btn btn-primary btn-block btn-submit">Soumettre</button>
+  </div>
 </div>

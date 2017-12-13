@@ -4,6 +4,8 @@ import {ConnexionService} from '../connexion/connexion.service';
 import {Router} from '@angular/router';
 import {UserInscription} from '../bean/userInscription';
 import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
+import {ConnexionFormComponent} from '../connexion/connexion-form-component';
+import {AlertService} from '../../alert/_services/alert.service';
 
 @Component({
   selector: 'app-inscription',
@@ -20,7 +22,7 @@ export class InscriptionFormComponent implements OnInit {
   formulaire = new UserInscription('', '', '', '', '');
 
 
-  constructor(private inscriptionService: InscriptionService, private connexionService: ConnexionService, private router: Router) {}
+  constructor(private inscriptionService: InscriptionService,  private router: Router, private alertService: AlertService) {}
 
   ngOnInit(): void {
     this.inscriptionForm = new FormGroup({
@@ -35,10 +37,10 @@ export class InscriptionFormComponent implements OnInit {
   inscription(): void {
     this.inscriptionService.inscription(this.formulaire.UInom, this.formulaire.UIprenom, this.formulaire.UImail, this.formulaire.UIpass)
       .subscribe(data => {
-        console.log('data', data);
-        this.connexionService.connexion(this.formulaire.UImail, this.formulaire.UIpass);
+        this.alertService.success('Votre compte à bien été enregistré', true);
+        this.router.navigate(['/connexion']);
       }, error => {
-        console.log(error);
+        this.alertService.error('Erreur lors de l\'inscription', false);
       });
   }
 

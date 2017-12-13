@@ -1,0 +1,16 @@
+<div class="col-md-12">
+  <div class="col-md-3 col-xs-3 lieu" *ngFor="let signalement of signalements">
+    <div class="col-md-12 image" style="padding-left: 0px;padding-right: 0px;">
+      <img [src]="signalement.photo" class="img-responsive">
+    </div>
+    <div class="col-md-12 quartier">
+      <span>{{signalement.quartier.nom}}</span>
+    </div>
+    <div class="col-md-12 description">
+      <p class="light">{{signalement.description}}</p>
+    </div>
+    <div class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
+      <button class="btn btn-primary btn-block yaller" type="submit" name="action"><a target="_blank" href="https://www.google.fr/maps/dir/'{{lat}},{{lng}}'/'{{signalement.localisation.latitude}},{{signalement.localisation.longitude}}'">Y aller ! </a></button>
+    </div>
+  </div>
+</div>

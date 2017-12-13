@@ -17,10 +17,15 @@ import {AccueilService} from './accueil/accueil.service';
 import {SignalerService} from './accueil/signaler/signaler.service';
 
 import {AgmCoreModule} from '@agm/core';
+import {OptimiserComponent} from './accueil/optimiser/optimiser.component';
+import {AlertComponent} from './alert/_directives/alert.component';
+import {OptimiserService} from './accueil/optimiser/optimiser.service';
+import {AlertService} from './alert/_services/alert.service';
 
 
 const googleMapsCore = AgmCoreModule.forRoot({
   apiKey : 'AIzaSyCPoOajyOD44_Dwie5XRMofsEDKoM7JMrs',
+  libraries: ['places']
 });
 
 
@@ -30,7 +35,9 @@ const googleMapsCore = AgmCoreModule.forRoot({
     InscriptionFormComponent,
     ConnexionFormComponent,
     AccueilComponent,
-    SignalerComponent
+    SignalerComponent,
+    OptimiserComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +52,9 @@ const googleMapsCore = AgmCoreModule.forRoot({
     InscriptionService,
     ConnexionService,
     AccueilService,
-    SignalerService
+    SignalerService,
+    OptimiserService,
+    AlertService
   ],
   bootstrap: [AppComponent]
 })

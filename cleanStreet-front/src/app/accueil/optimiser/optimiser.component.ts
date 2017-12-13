@@ -1,30 +1,27 @@
-import {Component, NgZone, OnInit} from '@angular/core';
-import {AccueilService} from './accueil.service';
-import {} from '@types/googlemaps';
-import {Router} from '@angular/router';
-import {Signalement} from './Bean/signalement';
-import {AlertService} from '../alert/_services/alert.service';
 
-declare var google: any;
+import {Component, OnInit} from '@angular/core';
+import {OptimiserService} from './optimiser.service';
+import {SignalerService} from '../signaler/signaler.service';
+import {AccueilService} from '../accueil.service';
+import {Signalement} from '../Bean/signalement';
 
 @Component ({
-  selector: 'app-cleanstreet',
-  templateUrl: './accueil.component.html',
-  styleUrls: ['./accueil.component.css'],
-  providers: [AccueilService]
+  selector: 'app-optimiser',
+  templateUrl: './optimiser.component.html',
+  styleUrls: ['./optimiser.component.css'],
+  providers: [OptimiserService]
 })
 
-export class AccueilComponent implements OnInit {
+export class OptimiserComponent implements OnInit {
   geolocationPosition: Position;
   lat: number = 50.6310622 ;
   lng: number = 3.0120553;
-
-  constructor(private accueilService: AccueilService, private alertService: AlertService) {}
-
   signalements: Signalement[];
 
+  constructor(private accueilService: AccueilService) {}
+
   ngOnInit(): void {
-    this.afficheSignalement();
+    this.getSignalements();
 
     if (window.navigator && window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(
@@ -32,7 +29,7 @@ export class AccueilComponent implements OnInit {
           this.geolocationPosition = position;
           this.lat = position.coords.latitude;
           this.lng = position.coords.longitude;
-          },
+        },
         error => {
           switch (error.code) {
             case 1:
@@ -48,9 +45,10 @@ export class AccueilComponent implements OnInit {
         }
       );
     }
+
   }
 
-  afficheSignalement(): void {
+  getSignalements(): void {
     this.accueilService.afficheSignalement()
       .subscribe(data => {
         this.signalements = data;
@@ -58,4 +56,5 @@ export class AccueilComponent implements OnInit {
         console.log(error);
       });
   }
+
 }
