@@ -20,8 +20,9 @@ import {OptimiserService} from './optimiser/optimiser.service';
 import {SignalerComponent} from './accueil/signaler/signaler.component';
 import {AccueilComponent} from './accueil/accueil.component';
 import {OptimiserComponent} from './optimiser/optimiser.component';
-import {EnteteComponent} from "./miseEnPage/entete/entete.component";
-import {PiedDePageComponent} from "./miseEnPage/piedDePage/piedDePage.component";
+import {EnteteComponent} from './miseEnPage/entete/entete.component';
+import {PiedDePageComponent} from './miseEnPage/piedDePage/piedDePage.component';
+import { HashLocationStrategy } from '@angular/common';
 
 
 const googleMapsCore = AgmCoreModule.forRoot({
@@ -57,6 +58,6 @@ const googleMapsCore = AgmCoreModule.forRoot({
     SignalerService,
     OptimiserService,
     AlertService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

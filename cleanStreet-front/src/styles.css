@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-html{
+body{
   background-image: url('assets/images/back.jpg');
   -webkit-background-size: cover; /* pour anciens Chrome et Safari */
   background-size: cover; /* version standardisÃ©e */
@@ -60,3 +60,7 @@ body{
   background-color: rgba(0,0,0,0);
 }
 
+.nav>li>a:focus, .nav>li>a:hover {
+  text-decoration: none;
+  background-color: rgba(51,122,183,0.5);
+}

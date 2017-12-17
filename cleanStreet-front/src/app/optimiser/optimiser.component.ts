@@ -16,10 +16,17 @@ export class OptimiserComponent implements OnInit {
   lat: number = 50.6310622 ;
   lng: number = 3.0120553;
   signalements: Signalement[];
+  isLog: boolean;
 
   constructor(private accueilService: AccueilService) {}
 
   ngOnInit(): void {
+    if (sessionStorage.getItem('utilisateur') != null) {
+      this.isLog = true;
+    } else {
+      this.isLog = false;
+    }
+
     this.getSignalements();
 
     if (window.navigator && window.navigator.geolocation) {
