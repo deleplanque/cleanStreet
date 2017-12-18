@@ -22,7 +22,6 @@ import {AccueilComponent} from './accueil/accueil.component';
 import {OptimiserComponent} from './optimiser/optimiser.component';
 import {EnteteComponent} from './miseEnPage/entete/entete.component';
 import {PiedDePageComponent} from './miseEnPage/piedDePage/piedDePage.component';
-import { HashLocationStrategy } from '@angular/common';
 
 
 const googleMapsCore = AgmCoreModule.forRoot({
