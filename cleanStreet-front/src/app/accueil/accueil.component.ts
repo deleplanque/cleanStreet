@@ -22,8 +22,18 @@ export class AccueilComponent implements OnInit {
   constructor(private accueilService: AccueilService, private alertService: AlertService) {}
 
   signalements: Signalement[];
+  isLog: boolean;
+
+
 
   ngOnInit(): void {
+   if (sessionStorage.getItem('utilisateur') != null) {
+      this.isLog = true;
+    } else {
+      this.isLog = false;
+    }
+
+    const carte = document.getElementById('carte');
     this.afficheSignalement();
 
     if (window.navigator && window.navigator.geolocation) {
@@ -57,5 +67,21 @@ export class AccueilComponent implements OnInit {
       }, error => {
         console.log(error);
       });
+  }
+
+  getWindowHeight() {
+    let windowHeight = 0;
+    if (typeof(window.innerHeight) === 'number') {
+      windowHeight = window.innerHeight;
+    } else {
+      if (document.documentElement && document.documentElement.clientHeight) {
+        windowHeight = document.documentElement.clientHeight;
+      } else {
+        if (document.body && document.body.clientHeight) {
+          windowHeight = document.body.clientHeight;
+        }
+      }
+    }
+    return windowHeight;
   }
 }

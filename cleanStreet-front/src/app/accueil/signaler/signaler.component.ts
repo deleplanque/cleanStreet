@@ -30,9 +30,14 @@ export class SignalerComponent implements OnInit {
   localisation: Localisation;
   quartier: Quartier;
   proprietaire: any;
-
+  isLog: boolean;
 
   ngOnInit(): void {
+    if (sessionStorage.getItem('utilisateur') != null) {
+      this.isLog = true;
+    } else {
+      this.isLog = false;
+    }
     this.afficheSignalement();
     this.signalerForm = new FormGroup({
       'description': new FormControl(this.formulaire.description),
