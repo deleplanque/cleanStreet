@@ -5,7 +5,7 @@
 
 	<groupId>com.cleanStreet</groupId>
 	<artifactId>webApp</artifactId>
-	<version>1.0.0-RELEASE</version>
+	<version>1.0-RELEASE</version>
 	<packaging>jar</packaging>
 
 	<name>WebApp</name>
