@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.cleanStreet</groupId>
-	<artifactId>webApp</artifactId>
+	<artifactId>cleanStreet</artifactId>
 	<version>1.0-RELEASE</version>
 	<packaging>jar</packaging>
 
