@@ -6,13 +6,8 @@
     "module": "es2015",
     "types": []
   },
-  "include": [
-    "app/src/**/*.ts",
-    "polyfills.ts"
-  ],
   "exclude": [
-    "./test/test.ts",
-    "./app/src/test/*",
-    "./app/src/**/*.spec.ts"
+    "test.ts",
+    "**/*.spec.ts"
   ]
 }
