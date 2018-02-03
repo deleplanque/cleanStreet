@@ -8,7 +8,7 @@ import {SignalerComponent} from './accueil/signaler/signaler.component';
 
 const routes: Routes = [
 
-  { path: '', redirectTo: '/inscription', pathMatch: 'full' },
+  { path: '', redirectTo: '/accueil', pathMatch: 'full' },
   { path: 'inscription', component: InscriptionFormComponent},
   { path: 'accueil', component: AccueilComponent },
   { path: 'connexion', component: ConnexionFormComponent},

@@ -1,31 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
-body{
-  background-image: url('assets/images/back.jpg');
+html{
+  overflow-x: hidden;
+  background: url('assets/images/background2.jpg') no-repeat center fixed;
   -webkit-background-size: cover; /* pour anciens Chrome et Safari */
   background-size: cover; /* version standardisÃ©e */
 }
 
 
-.input-field label{
-  color:#42a5f5;
+nav{
+  background-color: rgba(0,0,0,0.5);
+  position: fixed;
+  top:0px;
 }
 
-input[type="range"] + .thumb{
-  background-color: #1565c0;
-}
-
-.label-login{
-  font-size: 1.3rem;
-  color: #1e88e5;
-}
-
-.navbar{
-  border: none;
-  background-color: #1565c0;
-  border-radius: 0px;
-}
-
-.navbar a{
+nav a{
   color: white;
 }
 
@@ -40,10 +28,6 @@ footer{
   padding: 30px;
 }
 
-footer .glyphicon{
-  color: #1e88e5;
-  font-size: 50px;
-}
 
 footer .promo-caption{
   font-weight: bold;
@@ -60,7 +44,46 @@ body{
   background-color: rgba(0,0,0,0);
 }
 
-.nav>li>a:focus, .nav>li>a:hover {
-  text-decoration: none;
-  background-color: rgba(51,122,183,0.5);
+
+
+#modalConnexion{
+  width:20%
+}
+
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.background {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+
+.modal {
+  background-color: rgba(255,255,255,0.9);
+}
+
+.modal-header {
+  color: dimgrey;
+  text-align: center;
+  border-bottom: 1px solid dimgrey;
+}
+
+.modal-header h4 {
+  padding: 15px 0px 0px 0px;
+}
+
+nav .brand-logo {
+  position: absolute;
+  color: #fff;
+  display: inline-block;
+  font-size: 2.1rem;
+  left: 15px;
 }

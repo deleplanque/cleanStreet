@@ -1,5 +1,54 @@
 <header>
-  <nav *ngIf="true" class="navbar">
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Cleanstreet</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+       <!-- <li><a href="" routerLink="/accueil" routerLinkActive>Sensibiliser</a></li>
+        <li><a href="" routerLink="/optimisez" routerLinkActive>Optimiser</a></li>
+        <li><a href=""  routerLink="/signalez" routerLinkActive>Signaler</a></li>-->
+        <li><a (click)="connexion()">Connexion</a></li>
+        <li><a (click)="inscription()">Inscription</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li class="active"><a href="" routerLink="/accueil" routerLinkActive>Sensibiliser</a></li>
+        <li><a href="" routerLink="/optimisez" routerLinkActive>Optimiser</a></li>
+        <li><a href=""  routerLink="/signalez" routerLinkActive>Signaler</a></li>
+        <li><a (click)="connexion()">Connexion</a></li>
+        <li><a (click)="inscription()">Inscription</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Modal connexion -->
+  <div id="modalConnexion" class="modal">
+    <div class="modal-header"> <h4>Connexion</h4></div>
+    <div class="modal-content">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">account_circle</i>
+        <input placeholder="" id="email" type="text" class="validate">
+        <label for="email">Email</label>
+      </div>
+      <div class="input-field col s12">
+        <i class="material-icons prefix">https</i>
+        <input placeholder="" id="password" type="password" class="validate">
+        <label for="password">Mot de passe</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fin Modal connexion -->
+
+  <!-- Modal inscription -->
+  <div id="modalInscription" class="modal">
+    <div class="modal-content">
+      <p>A bunch of text</p>
+    </div>
+  </div>
+
+  <!-- Fin Modal inscription -->
+
+  <!--<nav *ngIf="true" class="navbar">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -28,5 +77,5 @@
         </ul>
       </div>
     </div>
-  </nav>
+  </nav>-->
 </header>

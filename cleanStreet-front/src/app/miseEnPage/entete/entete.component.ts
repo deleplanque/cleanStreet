@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
+declare var $: any;
+
 @Component ({
   selector: 'app-entete',
   templateUrl: 'entete.component.html'
@@ -13,12 +15,16 @@ export class EnteteComponent implements OnInit {
   isLog: boolean;
 
   ngOnInit(): void {
-    /*
-    if (sessionStorage.getItem('utilisateur') != null) {
-      this.isLog = true;
-    } else {
-      this.isLog = false;
-    }*/
+    $('.button-collapse').sideNav();
+    $('.modal').modal();
+  }
+
+  connexion(): void {
+    $('#modalConnexion').modal('open');
+  }
+
+  inscription(): void {
+    $('#modalInscription').modal('open');
   }
 
 
