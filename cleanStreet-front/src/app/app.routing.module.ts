@@ -5,6 +5,7 @@ import {ConnexionFormComponent} from './authentifiation/connexion/connexion-form
 import {AccueilComponent} from './accueil/accueil.component';
 import {OptimiserComponent} from './optimiser/optimiser.component';
 import {SignalerComponent} from './accueil/signaler/signaler.component';
+import {ContactComponent} from './contact/contact.component';
 
 const routes: Routes = [
 
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'accueil', component: AccueilComponent },
   { path: 'connexion', component: ConnexionFormComponent},
   { path: 'signalez', component: SignalerComponent },
-  { path: 'optimisez', component: OptimiserComponent }
+  { path: 'optimisez', component: OptimiserComponent },
+  { path: 'contact', component: ContactComponent }
 ];
 
 @NgModule({
