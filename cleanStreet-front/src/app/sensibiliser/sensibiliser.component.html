@@ -1,0 +1,13 @@
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPoOajyOD44_Dwie5XRMofsEDKoM7JMrs&callback=initMap"
+async defer>
+</script>
+
+<app-alert></app-alert>
+<div class="partie col-md-10 col-md-offset-1">
+<div class="titrePrincipale row"><h3>Carte des signalements</h3></div>
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
+<agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="'assets/images/marker_humain.png'"></agm-marker>
+<agm-marker *ngFor="let signalement of signalements" [latitude]="signalement.localisation.latitude" [longitude]="signalement.localisation.longitude"></agm-marker>
+</agm-map>
+</div>
