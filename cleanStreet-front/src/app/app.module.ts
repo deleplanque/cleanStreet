@@ -23,6 +23,7 @@ import {OptimiserComponent} from './optimiser/optimiser.component';
 import {EnteteComponent} from './miseEnPage/entete/entete.component';
 import {PiedDePageComponent} from './miseEnPage/piedDePage/piedDePage.component';
 import {ContactComponent} from './contact/contact.component';
+import {SensibiliserComponent} from './sensibiliser/sensibiliser.component';
 
 
 const googleMapsCore = AgmCoreModule.forRoot({
@@ -41,7 +42,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
     AlertComponent,
     EnteteComponent,
     PiedDePageComponent,
-    ContactComponent
+    ContactComponent,
+    SensibiliserComponent
   ],
   imports: [
     BrowserModule,
