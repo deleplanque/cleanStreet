@@ -144,7 +144,6 @@ agm-map {
 }
 /* sidebar style */
 
-.titreCliquable{
+html a{
   cursor: pointer;
-
 }
