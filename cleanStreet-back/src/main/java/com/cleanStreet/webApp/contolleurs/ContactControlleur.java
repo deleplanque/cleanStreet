@@ -29,7 +29,7 @@ public class ContactControlleur {
 		if (c == null) {
 			return new ResponseEntity<Contact>(HttpStatus.CONFLICT);
 		}
-		return new ResponseEntity<Contact>(s, HttpStatus.CREATED);
+		return new ResponseEntity<Contact>(c, HttpStatus.CREATED);
 	}
 
 	@RequestMapping(value="/afficheContact", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
