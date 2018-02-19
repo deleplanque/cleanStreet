@@ -1,38 +1,74 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPoOajyOD44_Dwie5XRMofsEDKoM7JMrs&callback=initMap"
         async defer>
 </script>
-
-<div class="col-md-8 col-md-offset-2 partie">
-  <div class="row titrePrincipale">
-    <h3>Signalez un lieu sale  </h3>
-  </div>
-  <div class="col-md-6">
-    <form [formGroup]="signalerForm" (ngSubmit)="signaler()" >
-      <div class="form-group">
-        <label class="control-label" for="description">Description:</label>
-        <textarea type="text" class="form-control" rows="5" id="description" formControlName="description" [(ngModel)]="formulaire.description"></textarea>
+<div class="row">
+  <div class="col m8 offset-m2">
+    <div class="col m6">
+      <div class="popin-header">
+        <h2>Signaler : </h2>
       </div>
-      <div class="form-group">
-        <label class="control-label" for="indice">Indice de propreté:</label>
-          <input type="range" id="indice" formControlName="indiceDeProprete" [(ngModel)]="formulaire.indiceDeProprete" min="0" max="10" />
-      </div>
-      <div class="form-group">
-        <label class="control-label" for="photo">Photo:</label>
-        <input type="file" id="photo" formControlName="image" [(ngModel)]="formulaire.image" capture="camera" accept="image/*"  style="visibility:hidden" (change)="displayPhoto($event)">
-        <button class="btn btn-primary btn-md" onclick="$('#photo').click();">Ajouter une photo</button>
-        <div class="col-md-8 col-md-offset-2">
-          <img [src]="imageSrc" class="img-responsive" id="preview" alt=""/>
+      <div class="popin">
+        <div class="row">
+          <div class="input-field col m12">
+          <textarea id="description" formControlName="description" [(ngModel)]="formulaire.description" class="materialize-textarea"></textarea>
+          <label for="description">Description : </label>
+        </div>
+        </div>
+        <div class="row">
+          <label for="indice">Indice de propreté : </label>
+          <p class="col m12 range-field">
+            <input type="range" id="indice" formControlName="indiceDeProprete" [(ngModel)]="formulaire.indiceDeProprete" min="0" max="10" />
+          </p>
+        </div>
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>Image</span>
+            <input formControlName="image" [(ngModel)]="formulaire.image" type="file">
+          </div>
+          <div class="row">
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text">
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-md-4 col-md-offset-4">
-        <button type="submit" class="btn btn-primary btn-block btn-submit">Soumettre</button>
-      </div>
-    </form>
-  </div>
-    <div class="col-md-6 carte">
-      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
-        <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="'assets/images/marker_humain.png'"></agm-marker>
-        <agm-marker *ngFor="let signalement of signalements" [latitude]="signalement.localisation.latitude" [longitude]="signalement.localisation.longitude"></agm-marker>
-      </agm-map>
     </div>
+    <div class="col m6">
+
+    </div>
+  </div>
+  <!--<div class="col m8 offset-m2 partie">
+    <div class="row titrePrincipale">
+      <h3>Signaler un lieu sale  </h3>
+    </div>
+    <div class="col m6">
+      <form [formGroup]="signalerForm" (ngSubmit)="signaler()" >
+        <div class="form-group">
+          <label class="control-label" for="description">Description:</label>
+          <textarea type="text" class="form-control" rows="5" id="description" formControlName="description" [(ngModel)]="formulaire.description"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="indice">Indice de propreté:</label>
+            <input type="range" id="indice" formControlName="indiceDeProprete" [(ngModel)]="formulaire.indiceDeProprete" min="0" max="10" />
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="photo">Photo:</label>
+          <input type="file" id="photo" formControlName="image" [(ngModel)]="formulaire.image" capture="camera" accept="image/*"  style="visibility:hidden" (change)="displayPhoto($event)">
+          <button class="btn btn-primary btn-md" onclick="$('#photo').click();">Ajouter une photo</button>
+          <div class="col-md-8 col-md-offset-2">
+            <img [src]="imageSrc" class="responsive-img" id="preview" alt=""/>
+          </div>
+        </div>
+        <div class="col m4 offset-m4">
+          <button type="submit" class="btn btn-primary btn-block btn-submit">Soumettre</button>
+        </div>
+      </form>
+    </div>
+      <div class="col m6 carte">
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
+          <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="'assets/images/marker_humain.png'"></agm-marker>
+          <agm-marker *ngFor="let signalement of signalements" [latitude]="signalement.localisation.latitude" [longitude]="signalement.localisation.longitude"></agm-marker>
+        </agm-map>
+      </div>
+  </div>-->
 </div>
