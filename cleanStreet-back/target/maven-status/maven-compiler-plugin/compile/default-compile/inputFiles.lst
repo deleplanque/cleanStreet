@@ -1,3 +1,4 @@
+C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\services\IContactService.java
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\ServletInitializer.java
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\dao\ISignalementDAO.java
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\contolleurs\AuthentificationControlleur.java
@@ -6,6 +7,8 @@ C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStr
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\entite\Quartier.java
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\dao\ILocalisationDAO.java
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\services\IAuthentificationService.java
+C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\dao\IContactDAO.java
+C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\services\ContactService.java
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\services\LocalisationService.java
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\contolleurs\LocalisationControlleur.java
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\contolleurs\SignalementControlleur.java
@@ -16,4 +19,6 @@ C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStr
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\entite\Signalement.java
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\entite\Localisation.java
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\WebAppApplication.java
+C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\entite\Contact.java
+C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\contolleurs\ContactControlleur.java
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\services\ISignalementService.java

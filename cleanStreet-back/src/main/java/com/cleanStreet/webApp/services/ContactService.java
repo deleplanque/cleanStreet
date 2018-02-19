@@ -16,7 +16,7 @@ public class ContactService implements IContactService{
 
 
 	@Override
-	public Localisation creerContact(Contact contact) {
+	public Contact creerContact(Contact contact) {
 		contactDAO.saveAndFlush(contact);
 		return contact;
 	}

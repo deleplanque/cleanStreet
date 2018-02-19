@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cleanStreet.webApp.entite.Contact;
 import com.cleanStreet.webApp.services.IContactService;
@@ -25,11 +24,11 @@ public class ContactControlleur {
 	@RequestMapping(value = "/ajouterContact", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Contact> ajouterContact(@RequestBody Contact contact) {
 
-		Contact c = contactService.ajouterContact(contact);
+		Contact c = contactService.creerContact(contact);
 		if (c == null) {
 			return new ResponseEntity<Contact>(HttpStatus.CONFLICT);
 		}
-		return new ResponseEntity<Contact>(s, HttpStatus.CREATED);
+		return new ResponseEntity<Contact>(c, HttpStatus.CREATED);
 	}
 
 	@RequestMapping(value="/afficheContact", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
