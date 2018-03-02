@@ -131,6 +131,12 @@ input[type="range"] + .thumb{
   color: lightslategrey;
 }
 
+.description-popin{
+  padding: 10px;
+  font-size: 20px;
+  color: black;
+}
+
 
 agm-map {
 

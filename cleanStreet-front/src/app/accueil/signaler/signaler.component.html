@@ -34,8 +34,11 @@
       </div>
     </div>
     <div class="col m6">
-
-    </div>
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
+          <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="'assets/images/marker_humain.png'"></agm-marker>
+          <agm-marker *ngFor="let signalement of signalements" [latitude]="signalement.localisation.latitude" [longitude]="signalement.localisation.longitude"></agm-marker>
+        </agm-map>
+      </div>
   </div>
   <!--<div class="col m8 offset-m2 partie">
     <div class="row titrePrincipale">
