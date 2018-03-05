@@ -12,7 +12,7 @@ import {Quartier} from '../Bean/quartier';
 @Component ({
   selector: 'app-signaler',
   templateUrl: './signaler.component.html',
-  styleUrls: ['../accueil.component.css'],
+  styleUrls: ['./signaler.component.css'],
   providers: [SignalerService]
 })
 export class SignalerComponent implements OnInit {

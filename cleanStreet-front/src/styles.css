@@ -6,6 +6,9 @@ html{
   background-size: cover; /* version standardisÃ©e */
 }
 
+h4{
+margin-bottom:5%;
+}
 
 nav{
   background-color: rgba(0,0,0,0.5);
@@ -83,7 +86,7 @@ nav .brand-logo {
   background-color: rgba(56,56,56,0.9);
   color: white;
   border-radius: 15px 15px 0 0;
-  padding: 0px 0px 5px 15px;
+  padding:0px;
 }
 
 

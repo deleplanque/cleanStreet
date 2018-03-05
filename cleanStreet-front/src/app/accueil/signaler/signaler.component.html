@@ -2,12 +2,10 @@
         async defer>
 </script>
 <div class="row">
-  <div class="col m8 offset-m2">
-    <div class="col m6">
-      <div class="popin-header">
-        <h2>Signaler : </h2>
-      </div>
-      <div class="popin">
+  <div class="col m8 offset-m2 popin-header block">
+    <div class="col m12">
+        <h4>Signaler : </h4>
+      <div class="col m6 popin">
         <div class="row">
           <div class="input-field col m12">
           <textarea id="description" formControlName="description" [(ngModel)]="formulaire.description" class="materialize-textarea"></textarea>
@@ -32,13 +30,13 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="col m6">
+      <div class="col m6 popin">
         <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
           <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="'assets/images/marker_humain.png'"></agm-marker>
           <agm-marker *ngFor="let signalement of signalements" [latitude]="signalement.localisation.latitude" [longitude]="signalement.localisation.longitude"></agm-marker>
         </agm-map>
       </div>
+    </div>
   </div>
   <!--<div class="col m8 offset-m2 partie">
     <div class="row titrePrincipale">
