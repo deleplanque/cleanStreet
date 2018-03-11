@@ -106,3 +106,26 @@ agm-map {
   margin-left:25%;
   margin-right:25%;
 }
+
+.btn-submit{
+  margin-left:100%;
+}
+
+.mapSignaler{
+  margin-left:100px;
+}
+
+h4{
+  text-align:center;
+}
+
+.row .col.s5{
+  height:470px;
+}
+
+
+@media only screen and (max-width:1300px){
+  nav .brand-logo{
+    text-align:center;
+  }
+}
