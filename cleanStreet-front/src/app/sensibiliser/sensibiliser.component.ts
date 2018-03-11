@@ -19,7 +19,7 @@ export class SensibiliserComponent implements OnInit {
   lat: number = 50.6310622 ;
   lng: number = 3.0120553;
 
-  constructor(private accueilService: AccueilService, private alertService: AlertService) {}
+  constructor(private router: Router, private accueilService: AccueilService, private alertService: AlertService) {}
 
   signalements: Signalement[];
   isLog: boolean;
@@ -27,10 +27,11 @@ export class SensibiliserComponent implements OnInit {
 
 
   ngOnInit(): void {
-   if (sessionStorage.getItem('utilisateur') != null) {
+    if (sessionStorage.getItem('utilisateur') != null) {
       this.isLog = true;
     } else {
       this.isLog = false;
+      this.router.navigate(['/accueil']);
     }
 
     const carte = document.getElementById('carte');

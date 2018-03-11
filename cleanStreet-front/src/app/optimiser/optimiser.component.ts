@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {OptimiserService} from './optimiser.service';
 import {Signalement} from '../accueil/Bean/signalement';
 import {AccueilService} from '../accueil/accueil.service';
+import {Router} from '@angular/router';
 
 @Component ({
   selector: 'app-optimiser',
@@ -18,13 +19,14 @@ export class OptimiserComponent implements OnInit {
   signalements: Signalement[];
   isLog: boolean;
 
-  constructor(private accueilService: AccueilService) {}
+  constructor(private router: Router, private accueilService: AccueilService) {}
 
   ngOnInit(): void {
     if (sessionStorage.getItem('utilisateur') != null) {
       this.isLog = true;
     } else {
       this.isLog = false;
+      this.router.navigate(['/accueil']);
     }
 
     this.getSignalements();

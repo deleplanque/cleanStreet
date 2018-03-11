@@ -27,11 +27,6 @@ export class AccueilComponent implements OnInit {
 
 
   ngOnInit(): void {
-   if (sessionStorage.getItem('utilisateur') != null) {
-      this.isLog = true;
-    } else {
-      this.isLog = false;
-    }
 
     const carte = document.getElementById('carte');
     this.afficheSignalement();

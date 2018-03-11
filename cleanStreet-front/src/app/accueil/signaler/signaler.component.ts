@@ -8,6 +8,7 @@ import {SignalementForm} from '../formBean/signalementForm';
 import {User} from '../../authentifiation/bean/user';
 import {Localisation} from '../Bean/localisation';
 import {Quartier} from '../Bean/quartier';
+import {Router} from '@angular/router';
 
 @Component ({
   selector: 'app-signaler',
@@ -21,7 +22,7 @@ export class SignalerComponent implements OnInit {
   lat: number = 50.6310622 ;
   lng: number = 3.0120553;
 
-  constructor(private accueilService: AccueilService, private signalerService: SignalerService) {}
+  constructor(private router: Router, private accueilService: AccueilService, private signalerService: SignalerService) {}
 
   signalements: Signalement[];
   signalerForm: FormGroup;
@@ -37,6 +38,7 @@ export class SignalerComponent implements OnInit {
       this.isLog = true;
     } else {
       this.isLog = false;
+      this.router.navigate(['/accueil']);
     }
     this.afficheSignalement();
     this.signalerForm = new FormGroup({

@@ -1,16 +1,17 @@
-<div class="col-md-12">
-  <div class="col-md-3 col-xs-6 lieu" *ngFor="let signalement of signalements">
-    <div class="col-md-12 image" style="padding-left: 0px;padding-right: 0px;">
-      <img [src]="signalement.photo" class="img-responsive">
-    </div>
-    <div class="col-md-12 quartier">
-      <span>{{signalement.quartier.nom}}</span>
-    </div>
-    <div class="col-md-12 description">
-      <p class="light">{{signalement.description}}</p>
-    </div>
-    <div class="col-md-12" style="padding-left: 0px;padding-right: 0px;">
-      <button class="btn btn-primary btn-block" type="submit" name="action"><a target="_blank" href="https://www.google.fr/maps/dir/'{{lat}},{{lng}}'/'{{signalement.localisation.latitude}},{{signalement.localisation.longitude}}'">Y aller ! </a></button>
+<div class="row">
+  <div class="col m10 offset-m1">
+    <div class="col s12 m3" *ngFor="let signalement of signalements">
+      <div class="card">
+        <div class="card-image">
+          <img [src]="signalement.photo" class="">
+          <span class="card-title">{{signalement.quartier.nom}}</span>
+          <a target="_blank" href="https://www.google.fr/maps/dir/'{{lat}},{{lng}}'/'{{signalement.localisation.latitude}},{{signalement.localisation.longitude}}'" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">send</i></a>
+        </div>
+        <div class="card-content">
+          <p>{{signalement.description}}</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
