@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,7 +37,12 @@ public class SignalementControlleur {
 	public ResponseEntity<List<Signalement>> getSignalement(){
 		return new ResponseEntity<List<Signalement>>(signalementService.getSignalement(), HttpStatus.OK);
 	}
-
+	
+	@RequestMapping(value="/getSignalementById/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Signalement> getSignalementById(@PathVariable("id") int id){
+		return new ResponseEntity<Signalement>(signalementService.getSignalementById(id), HttpStatus.OK);
+	}
+	
 	@RequestMapping(value="/afficheSignalementParQuartier", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Signalement>> getSignalementParQuartier(@RequestParam(value="quartier") String quartier){
 		return new ResponseEntity<List<Signalement>>(signalementService.getSignalementParQuartier(quartier), HttpStatus.OK);

@@ -142,7 +142,7 @@ footer {
     color: white;
     border-radius: 15px 15px 0 0;
     padding: 0px 0px 5px 15px;
-    margin-top: "60px";
+    margin-top: 60px;
   }
 
   nav .brand-logo {
@@ -156,4 +156,25 @@ footer {
   .row .col {
     margin-top: 5%;
   }
+}
+
+.listSignalements {
+  margin-top: 80px;
+}
+
+.listSignalements .card{
+  background-color: white;
+}
+
+
+.popin-map {
+  margin-top: -28px;
+  background-color: rgba(255,255,255,1);
+  border-radius: 0px 0px 15px 15px;
+  padding: 5px;
+  text-align: justify;
+}
+
+#mapSignalements {
+  margin-top: 80px;
 }

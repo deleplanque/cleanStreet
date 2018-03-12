@@ -3,11 +3,16 @@
 async defer>
 </script>
 
-<app-alert></app-alert>
-<div class="partie col-md-10 col-md-offset-1">
-<div class="titrePrincipale row"><h3>Carte des signalements</h3></div>
-<agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
-<agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="'assets/images/marker_humain.png'"></agm-marker>
-<agm-marker *ngFor="let signalement of signalements" [latitude]="signalement.localisation.latitude" [longitude]="signalement.localisation.longitude"></agm-marker>
-</agm-map>
+<div class="row">
+  <div id="mapSignalements" class="col m6 offset-m1">
+    <div class="popin-header">
+      <h2>Carte des signalements</h2>
+    </div>
+    <div class="popin-map description-popin">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
+        <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="'assets/images/marker_humain.png'"></agm-marker>
+        <agm-marker  (markerClick)="markerClick(signalement.localisation)" *ngFor="let signalement of signalements" [latitude]="signalement.localisation.latitude" [longitude]="signalement.localisation.longitude"></agm-marker>
+      </agm-map>
+    </div>
+  </div>
 </div>

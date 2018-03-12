@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cleanStreet.webApp.dao.ISignalementDAO;
-import com.cleanStreet.webApp.entite.Localisation;
 import com.cleanStreet.webApp.entite.Signalement;
 
 @Service
@@ -43,6 +42,11 @@ public class SignalementService implements ISignalementService{
 	@Override
 	public List<Signalement> afficheSignalementParIdUtilisateur(int id) {
 		return signalementDAO.findByProprietaireId(id);
+	}
+
+	@Override
+	public Signalement getSignalementById(int id) {
+		return signalementDAO.findById(id);
 	}
 
 }

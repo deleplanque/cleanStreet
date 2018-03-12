@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {HttpClient} from '@angular/common/http';
 import {Signalement} from './Bean/signalement';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class AccueilService {
@@ -9,6 +10,7 @@ export class AccueilService {
   private headers = new Headers({'Content-Type': 'application/json'});
 
   private afficheSignalementUrl = 'api/afficheSignalement';
+  private getSignalementByIdUrl = 'api/getSignalementById';
 
   constructor(private _http: HttpClient) {
       }
@@ -16,5 +18,11 @@ export class AccueilService {
 
   afficheSignalement() {
     return this._http.get<Signalement[]>(this.afficheSignalementUrl);
+  }
+
+
+  getSignalementById(id: number): Observable<Signalement> {
+    const url = `${this.getSignalementByIdUrl}/${id}`;
+    return this._http.get<Signalement>(url);
   }
 }

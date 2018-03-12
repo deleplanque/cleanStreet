@@ -70,6 +70,16 @@ export class SensibiliserComponent implements OnInit {
       });
   }
 
+  markerClick(m): void {
+    console.log(m);
+    this.accueilService.getSignalementById(m.id)
+      .subscribe(data => {
+        console.log(data);
+      }, error => {
+        console.log(error);
+      });
+  }
+
   getWindowHeight() {
     let windowHeight = 0;
     if (typeof(window.innerHeight) === 'number') {

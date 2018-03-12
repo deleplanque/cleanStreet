@@ -11,5 +11,6 @@ public interface ISignalementService {
 	List<Signalement> getSignalementParQuartier(String quartier);
 	void supprimerSignalement(int id);
 	List<Signalement> afficheSignalementParIdUtilisateur(int id);
+	Signalement getSignalementById(int id);
 
 }
