@@ -58,6 +58,16 @@ export class EnteteComponent implements OnInit {
   }
 
   sinscrire(): void {
+
+
+
+    var passwordInput = $('#passwordI');
+      var passwordLength = this.passwordI.length;
+      console.log(passwordLength);
+      var errorDisplay = (passwordLength < 6)?'inline':'none';
+      console.log(errorDisplay);
+      $('.error').css('display', errorDisplay);
+
     if (this.passwordI === this.passwordIR) {
       this.inscriptionService.inscription(this.nomI, this.prenomI, this.emailI, this.passwordI)
         .subscribe(data => {

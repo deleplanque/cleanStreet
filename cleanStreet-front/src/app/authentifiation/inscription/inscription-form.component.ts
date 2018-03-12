@@ -6,6 +6,7 @@ import {UserInscription} from '../bean/userInscription';
 import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import {ConnexionFormComponent} from '../connexion/connexion-form-component';
 import {AlertService} from '../../alert/_services/alert.service';
+declare var $: any;
 
 @Component({
   selector: 'app-inscription',
@@ -17,7 +18,7 @@ import {AlertService} from '../../alert/_services/alert.service';
 export class InscriptionFormComponent implements OnInit {
 
 
-
+  isValidFormSubmitted = false;
   inscriptionForm: FormGroup;
   formulaire = new UserInscription('', '', '', '', '');
 
@@ -49,5 +50,6 @@ export class InscriptionFormComponent implements OnInit {
   get UImail() { return this.inscriptionForm.get('UImail'); }
   get UIpass() { return this.inscriptionForm.get('UIpass'); }
   get UIrepetepass() { return this.inscriptionForm.get('UIrepetepass'); }
+
 
 }
