@@ -5,7 +5,6 @@ import {Signalement} from './Bean/signalement';
 import {AlertService} from '../alert/_services/alert.service';
 import {AccueilService} from '../accueil/accueil.service';
 
-declare var google: any;
 
 @Component ({
   selector: 'app-cleanstreet',
@@ -15,6 +14,9 @@ declare var google: any;
 })
 
 export class SensibiliserComponent implements OnInit {
+
+  signalement: Signalement;
+  isSelected = false;
   geolocationPosition: Position;
   lat: number = 50.6310622 ;
   lng: number = 3.0120553;
@@ -74,7 +76,8 @@ export class SensibiliserComponent implements OnInit {
     console.log(m);
     this.accueilService.getSignalementById(m.id)
       .subscribe(data => {
-        console.log(data);
+        this.signalement = data;
+        this.isSelected = true;
       }, error => {
         console.log(error);
       });
