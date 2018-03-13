@@ -1,6 +1,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPoOajyOD44_Dwie5XRMofsEDKoM7JMrs&callback=initMap"
         async defer>
 </script>
+<toaster-container></toaster-container>
 <div class="row">
   <div class="col m10 offset-m1 popin-header block">
     <div class="col m12 titleSignaler">
@@ -22,7 +23,7 @@
         <div class="file-field input-field">
           <div class="btn">
             <span>Image</span>
-            <input formControlName="image" [(ngModel)]="formulaire.image" type="file">
+            <input id="imageSignalement" formControlName="image" [(ngModel)]="formulaire.image" type="file">
           </div>
           <div class="row">
             <div class="file-path-wrapper">

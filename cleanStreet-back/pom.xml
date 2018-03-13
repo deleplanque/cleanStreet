@@ -62,6 +62,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+		  <groupId>com.clarifai.clarifai-api2</groupId>
+		  <artifactId>core</artifactId>
+		  <version>2.3.0</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

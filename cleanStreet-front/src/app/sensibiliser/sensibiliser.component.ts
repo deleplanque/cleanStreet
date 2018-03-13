@@ -4,13 +4,14 @@ import {Router} from '@angular/router';
 import {Signalement} from './Bean/signalement';
 import {AlertService} from '../alert/_services/alert.service';
 import {AccueilService} from '../accueil/accueil.service';
+import {ToasterService} from 'angular2-toaster';
 
 
 @Component ({
   selector: 'app-cleanstreet',
   templateUrl: './sensibiliser.component.html',
   styleUrls: ['./sensibiliser.component.css'],
-  providers: [AccueilService]
+  providers: [AccueilService, ToasterService]
 })
 
 export class SensibiliserComponent implements OnInit {
@@ -21,7 +22,7 @@ export class SensibiliserComponent implements OnInit {
   lat: number = 50.6310622 ;
   lng: number = 3.0120553;
 
-  constructor(private router: Router, private accueilService: AccueilService, private alertService: AlertService) {}
+  constructor(private router: Router, private accueilService: AccueilService, private alertService: AlertService, private toasterService: ToasterService) {}
 
   signalements: Signalement[];
   isLog: boolean;

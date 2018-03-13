@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.cleanStreet.webApp.entite.Quartier;
 import com.cleanStreet.webApp.entite.Signalement;
 import com.cleanStreet.webApp.services.ISignalementService;
 
@@ -38,13 +39,18 @@ public class SignalementControlleur {
 		return new ResponseEntity<List<Signalement>>(signalementService.getSignalement(), HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="/getQuartiers", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Quartier>> getQuartiers(){
+		return new ResponseEntity<List<Quartier>>(signalementService.getQuartiers(), HttpStatus.OK);
+	}
+	
 	@RequestMapping(value="/getSignalementById/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Signalement> getSignalementById(@PathVariable("id") int id){
 		return new ResponseEntity<Signalement>(signalementService.getSignalementById(id), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/afficheSignalementParQuartier", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Signalement>> getSignalementParQuartier(@RequestParam(value="quartier") String quartier){
+	@RequestMapping(value="/afficheSignalementParQuartier/{quartier}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Signalement>> getSignalementParQuartier(@PathVariable("quartier	") String quartier){
 		return new ResponseEntity<List<Signalement>>(signalementService.getSignalementParQuartier(quartier), HttpStatus.OK);
 
 	}

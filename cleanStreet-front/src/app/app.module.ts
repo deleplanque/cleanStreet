@@ -24,6 +24,8 @@ import {EnteteComponent} from './miseEnPage/entete/entete.component';
 import {PiedDePageComponent} from './miseEnPage/piedDePage/piedDePage.component';
 import {ContactComponent} from './contact/contact.component';
 import {SensibiliserComponent} from './sensibiliser/sensibiliser.component';
+import {ToasterModule} from 'angular2-toaster';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 const googleMapsCore = AgmCoreModule.forRoot({
@@ -52,7 +54,9 @@ const googleMapsCore = AgmCoreModule.forRoot({
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    googleMapsCore
+    googleMapsCore,
+    ToasterModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [
     InscriptionService,

@@ -178,3 +178,20 @@ footer {
 #mapSignalements {
   margin-top: 80px;
 }
+
+
+.filtre {
+  background-color: white;
+}
+
+.cache {
+  display: none;
+}
+
+.errorMessage
+{
+  font-size: 12px;
+  margin-top: -10px;
+  color: red;
+  font-style: italic;
+}

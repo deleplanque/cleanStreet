@@ -3,6 +3,7 @@ import {Http} from '@angular/http';
 import {HttpClient} from '@angular/common/http';
 import {Signalement} from './Bean/signalement';
 import {Observable} from 'rxjs/Observable';
+import {Quartier} from './Bean/quartier';
 
 @Injectable()
 export class AccueilService {
@@ -10,6 +11,7 @@ export class AccueilService {
   private headers = new Headers({'Content-Type': 'application/json'});
 
   private afficheSignalementUrl = 'api/afficheSignalement';
+  private getQuartiertUrl = 'api/getQuartiers';
   private getSignalementByIdUrl = 'api/getSignalementById';
 
   constructor(private _http: HttpClient) {
@@ -18,6 +20,10 @@ export class AccueilService {
 
   afficheSignalement() {
     return this._http.get<Signalement[]>(this.afficheSignalementUrl);
+  }
+
+  getQuartier() {
+    return this._http.get<Quartier[]>(this.getQuartiertUrl);
   }
 
 

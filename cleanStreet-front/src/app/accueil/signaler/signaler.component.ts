@@ -9,12 +9,13 @@ import {User} from '../../authentifiation/bean/user';
 import {Localisation} from '../Bean/localisation';
 import {Quartier} from '../Bean/quartier';
 import {Router} from '@angular/router';
-
+import {Toast, ToasterService} from 'angular2-toaster';
+declare var $: any;
 @Component ({
   selector: 'app-signaler',
   templateUrl: './signaler.component.html',
   styleUrls: ['./signaler.component.css'],
-  providers: [SignalerService]
+  providers: [SignalerService, ToasterService]
 })
 export class SignalerComponent implements OnInit {
   imageSrc: string = 'assets/images/noimage.jpg';
@@ -22,7 +23,7 @@ export class SignalerComponent implements OnInit {
   lat: number = 50.6310622 ;
   lng: number = 3.0120553;
 
-  constructor(private router: Router, private accueilService: AccueilService, private signalerService: SignalerService) {}
+  constructor(private router: Router, private accueilService: AccueilService, private toasterService: ToasterService, private signalerService: SignalerService) {}
 
   signalements: Signalement[];
   signalerForm: FormGroup;
@@ -78,11 +79,16 @@ export class SignalerComponent implements OnInit {
     this.quartier = new Quartier(2, 'Autres');
     this.proprietaire = JSON.parse(sessionStorage.getItem('utilisateur'));
     this.utilisateur = new User(this.proprietaire.id, this.proprietaire.nom, this.proprietaire.prenom, this.proprietaire.email);
-    this.signalerService.signaler(this.quartier, this.formulaire.description, this.imageSrc, this.localisation, this.formulaire.indiceDeProprete, this.utilisateur )
+    this.imageSrc = $('#imageSignalement').val();
+    this.signalerService.signaler(this.quartier, this.formulaire.description, this.imageSrc, this.localisation,
+      this.formulaire.indiceDeProprete, this.utilisateur )
       .subscribe(data => {
         console.log(data);
+        this.popToast('success', 'Signalement', 'Votre signalement à bien été pris en compte \n CleenStreet vous remercie !');
       }, error => {
         console.log(error);
+        this.popToast('error', 'Signalement', 'Erreur lors de la création de votre signalement. ' +
+          'L\'image renseignée ne correspond pas à des dechets');
       });
   }
 
@@ -110,4 +116,17 @@ export class SignalerComponent implements OnInit {
       reader.readAsDataURL(fileInput.target.files[0]);
     }
   }
+
+
+  popToast(type: string, title: string, body: string) {
+    const toast: Toast = {
+      type: type,
+      title: title,
+      body: body,
+      showCloseButton: true
+    };
+
+    this.toasterService.pop(toast);
+  }
+
 }

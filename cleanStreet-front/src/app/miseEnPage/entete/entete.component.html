@@ -1,3 +1,4 @@
+<toaster-container></toaster-container>
 <header>
   <nav>
     <div class="nav-wrapper">
@@ -50,24 +51,31 @@
     <div class="modal-header"> <h4>Inscription</h4></div>
     <div class="modal-content row">
       <div class="input-field col s6">
-        <input placeholder="" [(ngModel)]="nomI" name="nomI" id="nom" type="text" class="validate">
-        <label for="nom">Nom:</label>
+        <input placeholder="" [(ngModel)]="nomI" name="nomI" id="nomI" type="text" class="validate">
+        <label for="nomI">Nom:</label>
+        <span id="errorNomI" class="cache errorMessage">Le nom doit être renseigné</span>
       </div>
       <div class="input-field col s6">
-        <input placeholder="" [(ngModel)]="prenomI" name="prenomI" id="prenom" type="text" class="validate">
-        <label for="prenom">Prénom:</label>
+        <input placeholder="" [(ngModel)]="prenomI" name="prenomI" id="prenomI" type="text" class="validate">
+        <label for="prenomI">Prénom:</label>
+        <span id="errorPrenomI" class="cache errorMessage">Le prénom doit être renseigné</span>
       </div>
       <div class="input-field col s8">
         <input placeholder="" [(ngModel)]="emailI" name="emailI" id="emailI" type="email" class="validate">
         <label for="email">Email:</label>
+        <span id="errorEmailI" class="cache errorMessage">Format de mail invalide. Ex: xyz@exemple.fr</span>
       </div>
       <div class="input-field col s6">
         <input placeholder="" [(ngModel)]="passwordI" name="passwordI" id="passwordI" type="password" class="validate">
         <label for="passwordI">Mot de passe:</label>
+        <span id="errorPasswordI" class="cache errorMessage">Le mot de passe doit contenir 6 caratère au minimum.</span>
       </div>
       <div class="input-field col s6">
         <input placeholder="" [(ngModel)]="passwordIR" name="passwordIR" id="passwordIR" type="password" class="validate">
         <label for="passwordIR">Répetez le mot de passe:</label>
+      </div>
+      <div class="col s12">
+        <span id="errorPasswordIR" class="cache errorMessage">Les mots de passe ne sont pas identiques.</span>
       </div>
       <div class="col s12" style="text-align: center; margin: 10px">
         <button class="btn waves-effect waves-light" (click)="sinscrire()" type="submit" name="action">S'inscrire

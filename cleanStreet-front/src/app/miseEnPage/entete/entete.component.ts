@@ -2,18 +2,19 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ConnexionService} from '../../authentifiation/connexion/connexion.service';
 import {InscriptionService} from '../../authentifiation/inscription/inscription.service';
+import {Toast, ToasterService} from 'angular2-toaster';
 
 declare var $: any;
 
 @Component ({
   selector: 'app-entete',
   templateUrl: 'entete.component.html',
-  providers: [ConnexionService, InscriptionService]
+  providers: [ConnexionService, InscriptionService, ToasterService]
 })
 
 export class EnteteComponent implements OnInit {
 
-  constructor( private router: Router, private connexionService: ConnexionService, private inscriptionService: InscriptionService) {}
+  constructor( private router: Router, private connexionService: ConnexionService, private inscriptionService: InscriptionService, private toasterService: ToasterService) {}
 
   isLog: boolean;
   email: string;
@@ -51,27 +52,75 @@ export class EnteteComponent implements OnInit {
         sessionStorage.setItem('utilisateur', JSON.stringify(data));
         this.isLog = true;
         this.router.navigate(['/accueil']);
+        console.log(data);
+        this.popToast('success', 'Connexion', 'Bonjour ' + data.nom + ' ' + data.prenom);
         $('#modalConnexion').modal('close');
       }, error => {
-          console.log('erreur authent');
+        this.popToast('error', 'Connexion', 'Mail ou mot de passe incorrect');
       });
   }
 
   sinscrire(): void {
-    if (this.passwordI === this.passwordIR) {
+
+   let formIsValid = true;
+
+    if (this.nomI == null) {
+      formIsValid = false;
+      $('#errorNomI').removeClass('cache');
+      $('#nomI').addClass('invalid');
+    }
+
+    if (this.prenomI == null) {
+      formIsValid = false;
+      $('#errorPrenomI').removeClass('cache');
+      $('#prenomI').addClass('invalid');
+    }
+
+    if (this.emailI == null) {
+      formIsValid = false;
+      $('#errorEmailI').removeClass('cache');
+      $('#emailI').addClass('invalid');
+    }
+
+    if (this.passwordI == null) {
+      formIsValid = false;
+      $('#errorPasswordI').removeClass('cache');
+      $('#passwordI').addClass('invalid');
+    }
+
+    if (this.passwordI !== this.passwordIR) {
+      formIsValid = false;
+      $('#errorPasswordIR').removeClass('cache');
+      $('#passwordIR').addClass('invalid');
+      $('#passwordI').addClass('invalid');
+    }
+
+    if (formIsValid) {
       this.inscriptionService.inscription(this.nomI, this.prenomI, this.emailI, this.passwordI)
         .subscribe(data => {
           sessionStorage.setItem('utilisateur', JSON.stringify(data));
           this.isLog = true;
           $('#modalInscription').modal('close');
           this.router.navigate(['/accueil']);
+          this.popToast('success', 'Inscription', 'Bienvenue ' + data.nom + ' ' + data.prenom);
         }, error => {
-          console.log('erreur authent');
+          this.popToast('error', 'Inscription', 'Erreur du serveur lors de l\'inscription' );
         });
     } else {
-      console.log('inscription failed');
+      this.popToast('error', 'Inscription', 'Erreur lors de l\'inscription, veuillez vérifier ' +
+        'que tout les champs soient bien renseignés' );
     }
   }
 
+  popToast(type: string, title: string, body: string) {
+    const toast: Toast = {
+      type: type,
+      title: title,
+      body: body,
+      showCloseButton: true
+    };
+
+    this.toasterService.pop(toast);
+  }
 
 }

@@ -4,6 +4,7 @@ import {} from '@types/googlemaps';
 import {Router} from '@angular/router';
 import {Signalement} from './Bean/signalement';
 import {AlertService} from '../alert/_services/alert.service';
+import {Toast, ToasterConfig, ToasterService} from 'angular2-toaster';
 
 declare var google: any;
 
@@ -15,11 +16,15 @@ declare var google: any;
 })
 
 export class AccueilComponent implements OnInit {
+
+
+
+
   geolocationPosition: Position;
   lat: number = 50.6310622 ;
   lng: number = 3.0120553;
 
-  constructor(private accueilService: AccueilService, private alertService: AlertService) {}
+  constructor(private accueilService: AccueilService, private toasterService: ToasterService) {}
 
   signalements: Signalement[];
   isLog: boolean;
@@ -53,6 +58,18 @@ export class AccueilComponent implements OnInit {
         }
       );
     }
+  }
+
+
+  popToast(type: string, title: string, body: string) {
+    const toast: Toast = {
+      type: type,
+      title: title,
+      body: body,
+      showCloseButton: true
+    };
+
+    this.toasterService.pop(toast);
   }
 
   afficheSignalement(): void {

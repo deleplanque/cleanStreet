@@ -4,7 +4,8 @@ import {OptimiserService} from './optimiser.service';
 import {Signalement} from '../accueil/Bean/signalement';
 import {AccueilService} from '../accueil/accueil.service';
 import {Router} from '@angular/router';
-
+import {Quartier} from '../accueil/Bean/quartier';
+declare var $: any;
 @Component ({
   selector: 'app-optimiser',
   templateUrl: './optimiser.component.html',
@@ -17,7 +18,9 @@ export class OptimiserComponent implements OnInit {
   lat: number = 50.6310622 ;
   lng: number = 3.0120553;
   signalements: Signalement[];
+  quartiers: Quartier[];
   isLog: boolean;
+  selectedQuartier: string;
 
   constructor(private router: Router, private accueilService: AccueilService) {}
 
@@ -30,6 +33,9 @@ export class OptimiserComponent implements OnInit {
     }
 
     this.getSignalements();
+    this.getQuartier();
+
+    $('select').material_select();
 
     if (window.navigator && window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(
@@ -53,13 +59,27 @@ export class OptimiserComponent implements OnInit {
         }
       );
     }
-
   }
 
   getSignalements(): void {
     this.accueilService.afficheSignalement()
       .subscribe(data => {
         this.signalements = data;
+      }, error => {
+        console.log(error);
+      });
+  }
+
+  onChange(newValue) {
+    console.log(newValue);
+    this.selectedQuartier = newValue;
+  }
+
+  getQuartier(): void {
+    this.accueilService.getQuartier()
+      .subscribe(data => {
+        this.quartiers = data;
+        console.log(this.quartiers);
       }, error => {
         console.log(error);
       });
