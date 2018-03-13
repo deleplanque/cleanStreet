@@ -62,6 +62,7 @@ export class EnteteComponent implements OnInit {
 
   sinscrire(): void {
 
+<<<<<<< HEAD
    let formIsValid = true;
 
     if (this.nomI == null) {
@@ -96,6 +97,18 @@ export class EnteteComponent implements OnInit {
     }
 
     if (formIsValid) {
+=======
+
+
+    var passwordInput = $('#passwordI');
+      var passwordLength = this.passwordI.length;
+      console.log(passwordLength);
+      var errorDisplay = (passwordLength < 6)?'inline':'none';
+      console.log(errorDisplay);
+      $('.error').css('display', errorDisplay);
+
+    if (this.passwordI === this.passwordIR) {
+>>>>>>> b0bd5657d8fe5ccc1968b48f9949a342d9526bfb
       this.inscriptionService.inscription(this.nomI, this.prenomI, this.emailI, this.passwordI)
         .subscribe(data => {
           sessionStorage.setItem('utilisateur', JSON.stringify(data));
