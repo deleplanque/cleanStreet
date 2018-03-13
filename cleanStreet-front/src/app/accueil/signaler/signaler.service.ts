@@ -28,10 +28,10 @@ export class SignalerService {
       },
       indiceDeProprete: indiceDeProprete,
       proprietaire: {
-        id: proprietaire.uid,
-        nom: proprietaire.unom,
-        prenom: proprietaire.uprenom,
-        email: proprietaire.umail,
+        id: proprietaire.id,
+        nom: proprietaire.nom,
+        prenom: proprietaire.prenom,
+        email: proprietaire.mail,
         motDePasse: null,
         signalements: null
       }

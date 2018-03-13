@@ -14,7 +14,8 @@ declare var $: any;
 
 export class EnteteComponent implements OnInit {
 
-  constructor( private router: Router, private connexionService: ConnexionService, private inscriptionService: InscriptionService, private toasterService: ToasterService) {}
+  constructor( private router: Router, private connexionService: ConnexionService,
+               private inscriptionService: InscriptionService, private toasterService: ToasterService) {}
 
   isLog: boolean;
   email: string;
