@@ -33,7 +33,7 @@ public class SignalementService implements ISignalementService {
 		// You can change the Image URL accordingly.
 		// test if signalement can decode and copy the image
 		//Decode Base64 and create the File
-		try(FileOutputStream stream = new FileOutputStream("/home/ubuntu/pepit/cleanStreet/cleanStreet-front/src/" +signalement.getPhoto())) {
+		try(FileOutputStream stream = new FileOutputStream("../../cleanStreet-front/src/" +signalement.getPhoto())) {
 			
 			String imageData = signalement.getPhotoBase64().replaceFirst("^data:image/[^;]*;base64,?","");
 				byte[] img = Base64.decodeBase64(imageData);
