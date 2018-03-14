@@ -27,7 +27,7 @@ public class Signalement implements Serializable{
 	private Quartier quartier;
 	private String description;
 	private String photo;
-
+	private String photoBase64;
 	@OneToOne(cascade=CascadeType.ALL)
 	private Localisation localisation;
 
@@ -38,10 +38,11 @@ public class Signalement implements Serializable{
 
 	public Signalement(){}
 
-	public Signalement(Quartier quartier,String description, String photo, Localisation localisation, int indiceDeProprete, Utilisateur utilisateur){
+	public Signalement(Quartier quartier,String description, String photo, String photoBase64, Localisation localisation, int indiceDeProprete, Utilisateur utilisateur){
 		this.quartier = quartier;
 		this.description = description;
 		this.photo = photo;
+		this.photoBase64 = photoBase64;
 		this.localisation = localisation;
 		this.indiceDeProprete = indiceDeProprete;
 		this.proprietaire = utilisateur;
@@ -69,6 +70,14 @@ public class Signalement implements Serializable{
 
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}
+	
+	public String getPhotoBase64() {
+		return photoBase64;
+	}
+
+	public void setPhotoBase64(String photoBase64) {
+		this.photoBase64 = photoBase64;
 	}
 
 	public Localisation getLocalisation() {
