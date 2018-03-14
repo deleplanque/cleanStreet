@@ -1,5 +1,6 @@
 package com.cleanStreet.webApp.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,21 +75,55 @@ public class SignalementService implements ISignalementService {
 		return quartierDAO.findAll();
 	}
 
-	public double deg2rad(double x) {
-		return Math.PI * x / 180;
+	@Override
+	public List<Signalement> getSignalementsFiltres(int perimetre, String quartier, double lat, double lng) {
+		List<Signalement> signalementsFiltres = new ArrayList<Signalement>();
+		List<Signalement> allSignalements = getSignalement();
+		System.out.println("Lat: " + lat);
+		System.out.println("Lng: " + lng);
+		for (int i = 0; i < allSignalements.size(); i++) {
+			if (quartier.equals("Tous") && inPerimetre(perimetre, lat, lng, allSignalements.get(i).getLocalisation().getLatitude(),
+					allSignalements.get(i).getLocalisation().getLongitude())) {
+				if (inPerimetre(perimetre, lat, lng, allSignalements.get(i).getLocalisation().getLatitude(),
+						allSignalements.get(i).getLocalisation().getLongitude())) {
+					signalementsFiltres.add(allSignalements.get(i));
+				}
+			} else {
+				if (allSignalements.get(i).getQuartier().getNom().equals(quartier)
+						&& inPerimetre(perimetre, lat, lng, allSignalements.get(i).getLocalisation().getLatitude(),
+								allSignalements.get(i).getLocalisation().getLongitude())) {
+					signalementsFiltres.add(allSignalements.get(i));
+				}
+			}
+		}
+
+		return signalementsFiltres;
 	}
 
-	public double get_distance_m(double lat1, double lng1, double lat2, double lng2) {
-		int earth_radius = 6378137;
-		double rlo1 = deg2rad(lng1); 
-		double rla1 = deg2rad(lat1);
-		double rlo2 = deg2rad(lng2);
-		double rla2 = deg2rad(lat2);
-		double dlo = (rlo2 - rlo1) / 2;
-		double dla = (rla2 - rla1) / 2;
-		double a = (Math.sin(dla) * Math.sin(dla))
-				+ Math.cos(rla1) * Math.cos(rla2) * (Math.sin(dlo) * Math.sin(dlo));
-		double d = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-		return (earth_radius * d);
+	public boolean inPerimetre(int perimetre, double lat1, double lng1, double lat2, double lng2) {
+		int rayon = perimetre * 1000;
+		if (DistanceTo(lat1, lng1, lat2, lng2) < rayon) {
+			return true;
+		}
+		return false;
 	}
+
+
+
+	static double DistanceTo(double lat1, double lon1, double lat2, double lon2)
+	{
+	    double rlat1 = Math.PI * lat1/180;
+	    double rlat2 = Math.PI * lat2/180;
+	 
+	    double theta = lon1-lon2;
+	    double rtheta = Math.PI * theta/180;
+	 
+	    double dist = Math.sin(rlat1) * Math.sin(rlat2) + Math.cos(rlat1) * Math.cos(rlat2) * Math.cos(rtheta);
+	    dist = Math.acos(dist);
+	    dist = dist * 180/Math.PI;
+	    dist = dist * 60 * 1.1515;
+	    System.out.println(dist * 1.609344 * 1000);
+	    return dist * 1.609344 * 1000;
+	}
+	
 }

@@ -14,5 +14,6 @@ public interface ISignalementService {
 	List<Signalement> afficheSignalementParIdUtilisateur(int id);
 	Signalement getSignalementById(int id);
 	List<Quartier> getQuartiers();
+	List<Signalement> getSignalementsFiltres(int perimetre, String quartier, double lat, double lng);
 
 }

@@ -26,6 +26,7 @@ import {ContactComponent} from './contact/contact.component';
 import {SensibiliserComponent} from './sensibiliser/sensibiliser.component';
 import {ToasterModule} from 'angular2-toaster';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MaterialModule} from './material.module';
 
 
 const googleMapsCore = AgmCoreModule.forRoot({
@@ -56,7 +57,8 @@ const googleMapsCore = AgmCoreModule.forRoot({
     HttpClientModule,
     googleMapsCore,
     ToasterModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [
     InscriptionService,

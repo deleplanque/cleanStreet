@@ -50,7 +50,7 @@ public class SignalementControlleur {
 	}
 	
 	@RequestMapping(value="/afficheSignalementParQuartier/{quartier}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Signalement>> getSignalementParQuartier(@PathVariable("quartier	") String quartier){
+	public ResponseEntity<List<Signalement>> getSignalementParQuartier(@PathVariable("quartier") String quartier){
 		return new ResponseEntity<List<Signalement>>(signalementService.getSignalementParQuartier(quartier), HttpStatus.OK);
 
 	}
@@ -65,5 +65,10 @@ public class SignalementControlleur {
 	public ResponseEntity<List<Signalement>> afficheSignalementParIdUtilisateur(@RequestParam(value="id") int id){
 		return new ResponseEntity<List<Signalement>>(signalementService.afficheSignalementParIdUtilisateur(id), HttpStatus.OK);
 	}
-
+	
+	
+	@RequestMapping(value="/getSignalementsFiltres/{perimetre}/{quartier}/{lat}/{lng}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Signalement>> getSignalementsFiltres(@PathVariable("perimetre") int perimetre, @PathVariable("quartier") String quartier, @PathVariable("lat") double lat, @PathVariable("lng") double lng){
+		return new ResponseEntity<List<Signalement>>(signalementService.getSignalementsFiltres(perimetre, quartier, lat, lng), HttpStatus.OK);
+	}
 }

@@ -1,8 +1,27 @@
 
-
+<toaster-container></toaster-container>
 <div class="row">
   <div class="col m10 offset-m1">
     <div class="row filtre" >
+      <div class="col s4">
+        <label>Périmetre de recherche : </label>
+        <p class="range-field">
+          <input type="range" id="perimetre" [(ngModel)]="perimetre" min="0" max="100" />
+        </p>
+      </div>
+      <div class="col s4">
+        <label>Quariter : </label><br>
+        <mat-form-field>
+          <mat-select [(value)]="selected">
+            <mat-option value="Tous">Tous</mat-option>
+            <mat-option value="Fives">Fives</mat-option>
+            <mat-option value="Centre">Centre</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col s4">
+        <button class="btn" (click)="filtrer()">Filtrer !</button>
+      </div>
     </div>
     <div class="col s12 m3" *ngFor="let signalement of signalements">
       <div class="card">

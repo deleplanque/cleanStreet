@@ -13,6 +13,7 @@ export class AccueilService {
   private afficheSignalementUrl = 'api/afficheSignalement';
   private getQuartiertUrl = 'api/getQuartiers';
   private getSignalementByIdUrl = 'api/getSignalementById';
+  private getSignalementsFiltresUrl = 'api/getSignalementsFiltres';
 
   constructor(private _http: HttpClient) {
       }
@@ -30,5 +31,10 @@ export class AccueilService {
   getSignalementById(id: number): Observable<Signalement> {
     const url = `${this.getSignalementByIdUrl}/${id}`;
     return this._http.get<Signalement>(url);
+  }
+
+  getSignalementsFiltres(perimetre: number, quartier: string, lat: number, lng: number): Observable<Signalement[]> {
+    const url = `${this.getSignalementsFiltresUrl}/${perimetre}/${quartier}/${lat}/${lng}`;
+    return this._http.get<Signalement[]>(url);
   }
 }

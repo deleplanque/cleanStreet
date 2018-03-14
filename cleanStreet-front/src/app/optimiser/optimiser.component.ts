@@ -5,24 +5,26 @@ import {Signalement} from '../accueil/Bean/signalement';
 import {AccueilService} from '../accueil/accueil.service';
 import {Router} from '@angular/router';
 import {Quartier} from '../accueil/Bean/quartier';
+import {Toast, ToasterService} from 'angular2-toaster';
 declare var $: any;
 @Component ({
   selector: 'app-optimiser',
   templateUrl: './optimiser.component.html',
   styleUrls: ['./optimiser.component.css'],
-  providers: [OptimiserService]
+  providers: [OptimiserService, ToasterService]
 })
 
 export class OptimiserComponent implements OnInit {
   geolocationPosition: Position;
-  lat: number = 50.6310622 ;
-  lng: number = 3.0120553;
   signalements: Signalement[];
   quartiers: Quartier[];
   isLog: boolean;
-  selectedQuartier: string;
+  perimetre = 100;
+  selected = 'Tous';
+  lat: number;
+  lng: number;
 
-  constructor(private router: Router, private accueilService: AccueilService) {}
+  constructor(private router: Router, private accueilService: AccueilService, private toasterService: ToasterService) {}
 
   ngOnInit(): void {
     if (sessionStorage.getItem('utilisateur') != null) {
@@ -48,12 +50,15 @@ export class OptimiserComponent implements OnInit {
           switch (error.code) {
             case 1:
               console.log('Permission Denied');
+              this.popToast('error', 'Autorisation', 'Pour accéder à la fonction de signalement, CleanStreet a besoin de votre position');
               break;
             case 2:
               console.log('Position Unavailable');
+              this.popToast('error', 'Autorisation', 'Oupss ! Votre position n\'est pas disponible');
               break;
             case 3:
               console.log('Timeout');
+              this.popToast('error', 'Autorisation', 'Temps dépassé');
               break;
           }
         }
@@ -70,10 +75,6 @@ export class OptimiserComponent implements OnInit {
       });
   }
 
-  onChange(newValue) {
-    console.log(newValue);
-    this.selectedQuartier = newValue;
-  }
 
   getQuartier(): void {
     this.accueilService.getQuartier()
@@ -83,6 +84,35 @@ export class OptimiserComponent implements OnInit {
       }, error => {
         console.log(error);
       });
+  }
+
+  filtrer(): void {
+    if (this.lat == null || this.lng == null) {
+      this.popToast('error', 'Autorisation', 'Pour accéder à la fonction de ' +
+        'signalement, CleanStreet a besoin de votre position, veuillez modifier les paramètres de votre navigateur');
+    } else {
+      console.log(this.perimetre);
+      console.log(this.lat + ' , ' + this.lng)
+      this.accueilService.getSignalementsFiltres(this.perimetre, this.selected, this.lat, this.lng)
+        .subscribe(data => {
+          this.signalements = data;
+          console.log(this.signalements);
+        }, error => {
+          console.log(error);
+        });
+    }
+
+  }
+
+  popToast(type: string, title: string, body: string) {
+    const toast: Toast = {
+      type: type,
+      title: title,
+      body: body,
+      showCloseButton: true
+    };
+
+    this.toasterService.pop(toast);
   }
 
 }
