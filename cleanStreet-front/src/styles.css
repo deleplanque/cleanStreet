@@ -12,8 +12,6 @@ margin-bottom:5%;
 
 nav{
   background-color: rgba(0,0,0,0.5);
-  position: fixed;
-  top:0px;
 }
 
 nav a{
@@ -104,12 +102,12 @@ nav .brand-logo {
 
 footer {
   background-color: rgba(0,0,0,0.5);
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
+  padding: 15px;
   color: white;
   width: 100%;
 }
+
+
 
 .homePage {
   margin-top: 5%;
@@ -195,3 +193,12 @@ footer {
   color: red;
   font-style: italic;
 }
+
+.popin-header h2{
+  padding: 10px;
+}
+
+.popin-header h3{
+  padding: 10px;
+}
+
