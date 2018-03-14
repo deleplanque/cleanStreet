@@ -41,3 +41,9 @@ a{
   color: white;
   text-decoration: none;
 }
+
+.imgphoto{
+    max-height:150px;
+    max-width:500px;
+    object-fit: contain;
+  }

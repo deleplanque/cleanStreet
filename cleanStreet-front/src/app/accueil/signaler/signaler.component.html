@@ -28,7 +28,8 @@
           <div class="file-field input-field">
             <div class="btn">
               <span>Image</span>
-              <input id="imageSignalement" formControlName="image" [(ngModel)]="formulaire.image" type="file">
+              <input id="imageSignalement" formControlName="image" [(ngModel)]="formulaire.image" type="file"
+              (change)="changeListener($event)">
             </div>
             <div class="row">
               <div class="file-path-wrapper">
