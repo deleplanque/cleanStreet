@@ -1,8 +1,11 @@
 package com.cleanStreet.webApp.services;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,14 +31,25 @@ public class SignalementService implements ISignalementService {
 	@Override
 	public Signalement ajouterSignalement(Signalement signalement) {
 		// You can change the Image URL accordingly.
-		String imageUrl = "C:/Users/david/Pictures/pistolet.jpg";
-
+		// test if signalement can decode and copy the image
+		//Decode Base64 and create the File
+		try(FileOutputStream stream = new FileOutputStream("../../cleanStreet-front/src/" +signalement.getPhoto())) {
+			
+			String imageData = signalement.getPhotoBase64().replaceFirst("^data:image/[^;]*;base64,?","");
+				byte[] img = Base64.decodeBase64(imageData);
+				stream.write(img);
+			} catch (IOException e){
+				System.out.println("Error : IOexception" + e.getMessage());
+			}
+			String imageUrl ="../../cleanStreet-front/src/" + signalement.getPhoto();
+			
 		List<String> resultList = ClarifaiApi.recognize(imageUrl);
 		if (resultList.contains("marijuana") || resultList.contains("human") || resultList.contains("nude")
 				|| resultList.contains("weapon") || resultList.contains("gore") || resultList.contains("drug")) {
 			System.out.println(true);
 		} else {
 			System.out.println(false);
+			signalement.setPhotoBase64("true"); //not to upload a long base64 string
 			return signalementDAO.saveAndFlush(signalement);
 		}
 		for (String result : resultList) {
