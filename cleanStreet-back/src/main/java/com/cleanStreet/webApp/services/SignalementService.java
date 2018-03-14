@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.cleanStreet.webApp.api.ClarifaiApi;
 import com.cleanStreet.webApp.dao.IQuartierDAO;
 import com.cleanStreet.webApp.dao.ISignalementDAO;
+import com.cleanStreet.webApp.entite.FiltreForm;
 import com.cleanStreet.webApp.entite.Quartier;
 import com.cleanStreet.webApp.entite.Signalement;
 
@@ -76,21 +77,21 @@ public class SignalementService implements ISignalementService {
 	}
 
 	@Override
-	public List<Signalement> getSignalementsFiltres(int perimetre, String quartier, double lat, double lng) {
+	public List<Signalement> getSignalementsFiltres(FiltreForm filtreForm) {
 		List<Signalement> signalementsFiltres = new ArrayList<Signalement>();
 		List<Signalement> allSignalements = getSignalement();
-		System.out.println("Lat: " + lat);
-		System.out.println("Lng: " + lng);
+		System.out.println("Lat: " + filtreForm.getLat());
+		System.out.println("Lng: " + filtreForm.getLng());
 		for (int i = 0; i < allSignalements.size(); i++) {
-			if (quartier.equals("Tous") && inPerimetre(perimetre, lat, lng, allSignalements.get(i).getLocalisation().getLatitude(),
+			if (filtreForm.getQuartier().equals("Tous") && inPerimetre(filtreForm.getPerimetre(), filtreForm.getLat(), filtreForm.getLng(), allSignalements.get(i).getLocalisation().getLatitude(),
 					allSignalements.get(i).getLocalisation().getLongitude())) {
-				if (inPerimetre(perimetre, lat, lng, allSignalements.get(i).getLocalisation().getLatitude(),
+				if (inPerimetre(filtreForm.getPerimetre(), filtreForm.getLat(), filtreForm.getLng(), allSignalements.get(i).getLocalisation().getLatitude(),
 						allSignalements.get(i).getLocalisation().getLongitude())) {
 					signalementsFiltres.add(allSignalements.get(i));
 				}
 			} else {
-				if (allSignalements.get(i).getQuartier().getNom().equals(quartier)
-						&& inPerimetre(perimetre, lat, lng, allSignalements.get(i).getLocalisation().getLatitude(),
+				if (allSignalements.get(i).getQuartier().getNom().equals(filtreForm.getQuartier())
+						&& inPerimetre(filtreForm.getPerimetre(), filtreForm.getLat(), filtreForm.getLng(), allSignalements.get(i).getLocalisation().getLatitude(),
 								allSignalements.get(i).getLocalisation().getLongitude())) {
 					signalementsFiltres.add(allSignalements.get(i));
 				}

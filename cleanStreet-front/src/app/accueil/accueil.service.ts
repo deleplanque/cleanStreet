@@ -34,7 +34,12 @@ export class AccueilService {
   }
 
   getSignalementsFiltres(perimetre: number, quartier: string, lat: number, lng: number): Observable<Signalement[]> {
-    const url = `${this.getSignalementsFiltresUrl}/${perimetre}/${quartier}/${lat}/${lng}`;
-    return this._http.get<Signalement[]>(url);
+    const body = {
+      perimetre: perimetre,
+      quartier: quartier,
+      lat: lat,
+      lng: lng
+    };
+    return this._http.post<Signalement[]>(this.getSignalementsFiltresUrl, body);
   }
 }
