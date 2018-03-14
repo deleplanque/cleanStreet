@@ -20,10 +20,11 @@ declare var $: any;
 export class SignalerComponent implements OnInit {
   imageSrc: string = 'assets/images/noimage.jpg';
   geolocationPosition: Position;
-  lat: number = 50.6310622 ;
-  lng: number = 3.0120553;
+  lat: number;
+  lng: number;
 
-  constructor(private router: Router, private accueilService: AccueilService, private toasterService: ToasterService, private signalerService: SignalerService) {}
+  constructor(private router: Router, private accueilService: AccueilService,
+              private toasterService: ToasterService, private signalerService: SignalerService) {}
 
   signalements: Signalement[];
   signalerForm: FormGroup;
@@ -52,6 +53,7 @@ export class SignalerComponent implements OnInit {
       window.navigator.geolocation.getCurrentPosition(
         position => {
           this.geolocationPosition = position;
+          console.log('position : ' + this.geolocationPosition);
           this.lat = position.coords.latitude;
           this.lng = position.coords.longitude;
           this.localisation = new Localisation(this.lat, this.lng);
@@ -60,12 +62,15 @@ export class SignalerComponent implements OnInit {
           switch (error.code) {
             case 1:
               console.log('Permission Denied');
+              this.popToast('error', 'Autorisation', 'Pour accéder à la fonction de signalement, CleanStreet a besoin de votre position');
               break;
             case 2:
               console.log('Position Unavailable');
+              this.popToast('error', 'Autorisation', 'Oupss ! Votre position n\'est pas disponible');
               break;
             case 3:
               console.log('Timeout');
+              this.popToast('error', 'Autorisation', 'Temps dépassé');
               break;
           }
         }
@@ -75,21 +80,53 @@ export class SignalerComponent implements OnInit {
 
 
   signaler(): void {
+
+    let formIsValid = true;
+    console.log(this.formulaire.description);
+    if (this.formulaire.description === '') {
+      console.log(this.formulaire.description)
+      formIsValid = false;
+      $('#errorDescription').removeClass('cache');
+      $('#description').addClass('invalid');
+    } else {
+      $('#errorDescription').addClass('cache');
+      $('#description').removeClass('invalid');
+    }
+
     console.log('indice: ' + this.formulaire.indiceDeProprete);
-    this.quartier = new Quartier(2, 'Autres');
-    this.proprietaire = JSON.parse(sessionStorage.getItem('utilisateur'));
-    this.utilisateur = new User(this.proprietaire.id, this.proprietaire.nom, this.proprietaire.prenom, this.proprietaire.email);
-    this.imageSrc = $('#imageSignalement').val();
-    this.signalerService.signaler(this.quartier, this.formulaire.description, this.imageSrc, this.localisation,
-      this.formulaire.indiceDeProprete, this.utilisateur )
-      .subscribe(data => {
-        console.log(data);
-        this.popToast('success', 'Signalement', 'Votre signalement à bien été pris en compte \n CleenStreet vous remercie !');
-      }, error => {
-        console.log(error);
-        this.popToast('error', 'Signalement', 'Erreur lors de la création de votre signalement. ' +
-          'L\'image renseignée ne correspond pas à des dechets');
-      });
+    if (this.formulaire.indiceDeProprete === null) {
+      formIsValid = false;
+      $('#errorIndice').removeClass('cache');
+      $('#indice').addClass('invalid');
+    } else {
+      $('#errorIndice').addClass('cache');
+      $('#indice').removeClass('invalid');
+    }
+
+    if (this.lat == null || this.lng == null) {
+      formIsValid = false;
+      this.popToast('error', 'Autorisation', 'Pour accéder à la fonction de ' +
+        'signalement, CleanStreet a besoin de votre position, veuillez modifier les paramètres de votre navigateur');
+    }
+
+    if (formIsValid) {
+      console.log('indice: ' + this.formulaire.indiceDeProprete);
+      this.quartier = new Quartier(2, 'Autres');
+      this.proprietaire = JSON.parse(sessionStorage.getItem('utilisateur'));
+      this.utilisateur = new User(this.proprietaire.id, this.proprietaire.nom, this.proprietaire.prenom, this.proprietaire.email);
+      this.imageSrc = $('#imageSignalement').val();
+      this.signalerService.signaler(this.quartier, this.formulaire.description, this.imageSrc, this.localisation,
+        this.formulaire.indiceDeProprete, this.utilisateur )
+        .subscribe(data => {
+          console.log(data);
+          this.popToast('success', 'Signalement', 'Votre signalement à bien été pris en compte \n CleenStreet vous remercie !');
+        }, error => {
+          console.log(error);
+          this.popToast('error', 'Signalement', 'Erreur lors de la création de votre signalement. ' +
+            'L\'image renseignée ne correspond pas à des dechets');
+        });
+    }
+
   }
 
   get description() { return this.signalerForm.get('description'); }

@@ -202,3 +202,7 @@ footer {
   padding: 10px;
 }
 
+.toast-top-right {
+  top: 12px !important;
+  right: 12px !important;
+}

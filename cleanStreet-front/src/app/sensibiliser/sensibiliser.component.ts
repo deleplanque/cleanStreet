@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {Signalement} from './Bean/signalement';
 import {AlertService} from '../alert/_services/alert.service';
 import {AccueilService} from '../accueil/accueil.service';
-import {ToasterService} from 'angular2-toaster';
+import {Toast, ToasterService} from 'angular2-toaster';
 
 
 @Component ({
@@ -19,10 +19,11 @@ export class SensibiliserComponent implements OnInit {
   signalement: Signalement;
   isSelected = false;
   geolocationPosition: Position;
-  lat: number = 50.6310622 ;
-  lng: number = 3.0120553;
+  lat: number;
+  lng: number;
 
-  constructor(private router: Router, private accueilService: AccueilService, private alertService: AlertService, private toasterService: ToasterService) {}
+  constructor(private router: Router, private accueilService: AccueilService,
+              private alertService: AlertService, private toasterService: ToasterService) {}
 
   signalements: Signalement[];
   isLog: boolean;
@@ -51,12 +52,15 @@ export class SensibiliserComponent implements OnInit {
           switch (error.code) {
             case 1:
               console.log('Permission Denied');
+              this.popToast('error', 'Autorisation', 'Pour accéder à la fonction de signalement, CleanStreet a besoin de votre position');
               break;
             case 2:
               console.log('Position Unavailable');
+              this.popToast('error', 'Autorisation', 'Oupss ! Votre position n\'est pas disponible');
               break;
             case 3:
               console.log('Timeout');
+              this.popToast('error', 'Autorisation', 'Temps dépassé');
               break;
           }
         }
@@ -98,5 +102,16 @@ export class SensibiliserComponent implements OnInit {
       }
     }
     return windowHeight;
+  }
+
+  popToast(type: string, title: string, body: string) {
+    const toast: Toast = {
+      type: type,
+      title: title,
+      body: body,
+      showCloseButton: true
+    };
+
+    this.toasterService.pop(toast);
   }
 }

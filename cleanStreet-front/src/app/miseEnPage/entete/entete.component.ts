@@ -69,24 +69,36 @@ export class EnteteComponent implements OnInit {
       formIsValid = false;
       $('#errorNomI').removeClass('cache');
       $('#nomI').addClass('invalid');
+    }  else {
+      $('#errorNomI').addClass('cache');
+      $('#nomI').removeClass('invalid');
     }
 
     if (this.prenomI == null) {
       formIsValid = false;
       $('#errorPrenomI').removeClass('cache');
       $('#prenomI').addClass('invalid');
+    } else {
+      $('#errorPrenomI').addClass('cache');
+      $('#prenomI').removeClass('invalid');
     }
 
     if (this.emailI == null) {
       formIsValid = false;
       $('#errorEmailI').removeClass('cache');
       $('#emailI').addClass('invalid');
+    }else {
+      $('#errorEmailI').addClass('cache');
+      $('#emailI').removeClass('invalid');
     }
 
     if (this.passwordI == null) {
       formIsValid = false;
       $('#errorPasswordI').removeClass('cache');
       $('#passwordI').addClass('invalid');
+    } else {
+      $('#errorPasswordI').addClass('cache');
+      $('#passwordI').removeClass('invalid');
     }
 
     if (this.passwordI !== this.passwordIR) {
@@ -94,6 +106,10 @@ export class EnteteComponent implements OnInit {
       $('#errorPasswordIR').removeClass('cache');
       $('#passwordIR').addClass('invalid');
       $('#passwordI').addClass('invalid');
+    } else {
+      $('#errorPasswordIR').addClass('cache');
+      $('#passwordIR').removeClass('invalid');
+      $('#passwordI').removeClass('invalid');
     }
 
     if (formIsValid) {

@@ -32,33 +32,9 @@ export class AccueilComponent implements OnInit {
 
 
   ngOnInit(): void {
-
     const carte = document.getElementById('carte');
     this.afficheSignalement();
-
-    if (window.navigator && window.navigator.geolocation) {
-      window.navigator.geolocation.getCurrentPosition(
-        position => {
-          this.geolocationPosition = position;
-          this.lat = position.coords.latitude;
-          this.lng = position.coords.longitude;
-          },
-        error => {
-          switch (error.code) {
-            case 1:
-              console.log('Permission Denied');
-              break;
-            case 2:
-              console.log('Position Unavailable');
-              break;
-            case 3:
-              console.log('Timeout');
-              break;
-          }
-        }
-      );
-    }
-  }
+   }
 
 
   popToast(type: string, title: string, body: string) {

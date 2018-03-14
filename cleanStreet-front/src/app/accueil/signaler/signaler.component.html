@@ -13,8 +13,9 @@
         <form [formGroup]="signalerForm" (ngSubmit)="signaler()" >
           <div class="row">
             <p class="input-field col m12">
-              <textarea id="description" formControlName="description" [(ngModel)]="formulaire.description" class="materialize-textarea"></textarea>
+              <textarea id="description" formControlName="description" [(ngModel)]="formulaire.description" [name]="formulaire.description" class="materialize-textarea"></textarea>
               <label for="description">Description : </label>
+              <span id="errorDescription" class="cache errorMessage">Veuillez ajouter une description à votre signalement.</span>
             </p>
           </div>
           <div class="row">
@@ -22,6 +23,7 @@
             <p class="col m12 range-field">
               <input type="range" id="indice" formControlName="indiceDeProprete" [(ngModel)]="formulaire.indiceDeProprete" min="0" max="10" />
             </p>
+            <span id="errorIndice" class="cache errorMessage">Veuillez préciser l'indice de propreté.</span>
           </div>
           <div class="file-field input-field">
             <div class="btn">
