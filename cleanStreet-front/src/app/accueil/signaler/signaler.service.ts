@@ -9,12 +9,12 @@ export class SignalerService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
   private partagerUrl = 'api/ajouterSignalement';
-
+  
   constructor(private _http: Http) {
 
   }
 
-  signaler(quartier: Quartier,  description: string, image: string, localisation: Localisation, indiceDeProprete: number, proprietaire: User) {
+  signaler(quartier: Quartier,  description: string, image: string,photoBase64:string, localisation: Localisation, indiceDeProprete: number, proprietaire: User) {
     const body = {
       quartier: {
         id: quartier.id,
@@ -22,6 +22,7 @@ export class SignalerService {
       },
       description: description,
       photo: image,
+      photoBase64: photoBase64,
       localisation: {
         latitude: localisation.latitude,
         longitude: localisation.longitude

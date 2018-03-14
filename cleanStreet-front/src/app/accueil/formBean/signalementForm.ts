@@ -5,6 +5,7 @@ export class SignalementForm {
     public description: string,
     public indiceDeProprete: number,
     public image: String,
+    public imageBase: String,
   ) {  }
 
 }

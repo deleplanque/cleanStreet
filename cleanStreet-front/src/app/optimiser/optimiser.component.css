@@ -33,6 +33,12 @@
   background-color: #2196f3;
 }
 
+.imgphoto{
+  max-height:150px;
+  max-width:500px;
+  object-fit: contain;
+}
+
 a{
   color: white;
   text-decoration: none;

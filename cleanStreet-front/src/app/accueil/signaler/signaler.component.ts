@@ -18,6 +18,7 @@ declare var $: any;
   providers: [SignalerService, ToasterService]
 })
 export class SignalerComponent implements OnInit {
+  photoBase64: string = '';
   imageSrc: string = 'assets/images/noimage.jpg';
   geolocationPosition: Position;
   lat: number = 50.6310622 ;
@@ -27,7 +28,7 @@ export class SignalerComponent implements OnInit {
 
   signalements: Signalement[];
   signalerForm: FormGroup;
-  formulaire = new SignalementForm('', null, '');
+  formulaire = new SignalementForm('', null, '','');
   utilisateur: User;
   localisation: Localisation;
   quartier: Quartier;
@@ -73,18 +74,31 @@ export class SignalerComponent implements OnInit {
     }
   }
 
+  changeListener($event) : void {
+    this.readThis($event.target);
+  }
+  
+  readThis(inputValue: any): void {
+    var file:File = inputValue.files[0];
+    var myReader:FileReader = new FileReader();
+  
+    myReader.onloadend = (e) => {
+      this.photoBase64 = myReader.result;
+    }
+    myReader.readAsDataURL(file);
+  }
 
   signaler(): void {
-    console.log('indice: ' + this.formulaire.indiceDeProprete);
     this.quartier = new Quartier(2, 'Autres');
     this.proprietaire = JSON.parse(sessionStorage.getItem('utilisateur'));
     this.utilisateur = new User(this.proprietaire.id, this.proprietaire.nom, this.proprietaire.prenom, this.proprietaire.email);
-    this.imageSrc = $('#imageSignalement').val();
-    this.signalerService.signaler(this.quartier, this.formulaire.description, this.imageSrc, this.localisation,
+    this.imageSrc = "assets/images/"+$('#imageSignalement').val().split('/').pop().split('\\').pop();
+    console.log(this.imageSrc);
+    this.signalerService.signaler(this.quartier, this.formulaire.description, this.imageSrc, this.photoBase64, this.localisation,
       this.formulaire.indiceDeProprete, this.utilisateur )
       .subscribe(data => {
         console.log(data);
-        this.popToast('success', 'Signalement', 'Votre signalement à bien été pris en compte \n CleenStreet vous remercie !');
+        this.popToast('success', 'Signalement', 'Votre signalement à bien été pris en compte \n CleanStreet vous remercie !');
       }, error => {
         console.log(error);
         this.popToast('error', 'Signalement', 'Erreur lors de la création de votre signalement. ' +
