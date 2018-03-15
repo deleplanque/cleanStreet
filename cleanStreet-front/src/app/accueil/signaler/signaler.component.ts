@@ -129,6 +129,7 @@ export class SignalerComponent implements OnInit {
       this.proprietaire = JSON.parse(sessionStorage.getItem('utilisateur'));
       this.utilisateur = new User(this.proprietaire.id, this.proprietaire.nom, this.proprietaire.prenom, this.proprietaire.email);
       this.imageSrc = "assets/images/"+$('#imageSignalement').val().split('/').pop().split('\\').pop();
+      console.log('image src: ' + this.imageSrc);
       this.signalerService.signaler(this.quartier, this.formulaire.description, this.imageSrc, this.photoBase64, this.localisation,
         this.formulaire.indiceDeProprete, this.utilisateur )
         .subscribe(data => {
