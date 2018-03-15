@@ -37,14 +37,20 @@ public class SignalementService implements ISignalementService {
 		// test if signalement can decode and copy the image
 		//Decode Base64 and create the File
 		try(FileOutputStream stream = new FileOutputStream("../../cleanStreet-front/src/" +signalement.getPhoto())) {
+<<<<<<< HEAD
 			
+=======
+			System.out.println("signalement photo : "+ signalement.getPhoto());
+>>>>>>> 0f2b3da762fd7c108faf01e8de4d26ae3d9fb195
 			String imageData = signalement.getPhotoBase64().replaceFirst("^data:image/[^;]*;base64,?","");
+			System.out.println("imageData : "+ imageData);
 				byte[] img = Base64.decodeBase64(imageData);
 				stream.write(img);
 			} catch (IOException e){
 				System.out.println("Error : IOexception" + e.getMessage());
 			}
 			String imageUrl ="../../cleanStreet-front/src/" + signalement.getPhoto();
+<<<<<<< HEAD
 
 			try{
 				File file =new File("../../cleanStreet-front/src/assets/mylist.txt");
@@ -56,6 +62,9 @@ public class SignalementService implements ISignalementService {
 				 System.out.println("Exception occurred:" + ioe.getMessage());
 			   }
 
+=======
+			
+>>>>>>> 0f2b3da762fd7c108faf01e8de4d26ae3d9fb195
 		List<String> resultList = ClarifaiApi.recognize(imageUrl);
 		if (resultList.contains("marijuana") || resultList.contains("human") || resultList.contains("nude")
 				|| resultList.contains("weapon") || resultList.contains("gore") || resultList.contains("drug")) {
