@@ -34,9 +34,7 @@ public class SignalementService implements ISignalementService {
 		// test if signalement can decode and copy the image
 		//Decode Base64 and create the File
 		try(FileOutputStream stream = new FileOutputStream("../../cleanStreet-front/src/" +signalement.getPhoto())) {
-			System.out.println("signalement photo : "+ signalement.getPhoto());
 			String imageData = signalement.getPhotoBase64().replaceFirst("^data:image/[^;]*;base64,?","");
-			System.out.println("imageData : "+ imageData);
 				byte[] img = Base64.decodeBase64(imageData);
 				stream.write(img);
 			} catch (IOException e){
