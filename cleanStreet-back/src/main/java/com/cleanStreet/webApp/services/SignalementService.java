@@ -33,7 +33,7 @@ public class SignalementService implements ISignalementService {
 		// You can change the Image URL accordingly.
 		// test if signalement can decode and copy the image
 		//Decode Base64 and create the File
-		try(FileOutputStream stream = new FileOutputStream("../../cleanStreet-front/src/" +signalement.getPhoto())) {
+		try(FileOutputStream stream = new FileOutputStream("/var/lib/jenkins/workspace/Build_Cleanstreet/cleanStreet-front/src/" +signalement.getPhoto())) {
 			
 			String imageData = signalement.getPhotoBase64().replaceFirst("^data:image/[^;]*;base64,?","");
 				byte[] img = Base64.decodeBase64(imageData);
@@ -41,7 +41,7 @@ public class SignalementService implements ISignalementService {
 			} catch (IOException e){
 				System.out.println("Error : IOexception" + e.getMessage());
 			}
-			String imageUrl ="../../cleanStreet-front/src/" + signalement.getPhoto();
+			String imageUrl ="/var/lib/jenkins/workspace/Build_Cleanstreet/cleanStreet-front/src/" + signalement.getPhoto();
 			
 		List<String> resultList = ClarifaiApi.recognize(imageUrl);
 		if (resultList.contains("marijuana") || resultList.contains("human") || resultList.contains("nude")
