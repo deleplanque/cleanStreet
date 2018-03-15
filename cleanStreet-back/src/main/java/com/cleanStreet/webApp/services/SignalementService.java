@@ -1,6 +1,9 @@
 package com.cleanStreet.webApp.services;
 
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +36,7 @@ public class SignalementService implements ISignalementService {
 		// You can change the Image URL accordingly.
 		// test if signalement can decode and copy the image
 		//Decode Base64 and create the File
-		try(FileOutputStream stream = new FileOutputStream("/var/lib/jenkins/workspace/Build_Cleanstreet/cleanStreet-front/src/" +signalement.getPhoto())) {
+		try(FileOutputStream stream = new FileOutputStream("../../cleanStreet-front/src/" +signalement.getPhoto())) {
 			
 			String imageData = signalement.getPhotoBase64().replaceFirst("^data:image/[^;]*;base64,?","");
 				byte[] img = Base64.decodeBase64(imageData);
@@ -41,8 +44,18 @@ public class SignalementService implements ISignalementService {
 			} catch (IOException e){
 				System.out.println("Error : IOexception" + e.getMessage());
 			}
-			String imageUrl ="/var/lib/jenkins/workspace/Build_Cleanstreet/cleanStreet-front/src/" + signalement.getPhoto();
-			
+			String imageUrl ="../../cleanStreet-front/src/" + signalement.getPhoto();
+
+			try{
+				File file =new File("../../cleanStreet-front/src/assets/mylist.txt");
+				FileWriter fw = new FileWriter(file,true);
+				BufferedWriter bw = new BufferedWriter(fw);
+				bw.write(signalement.getPhoto());
+				bw.close();
+			  }catch(IOException ioe){
+				 System.out.println("Exception occurred:" + ioe.getMessage());
+			   }
+
 		List<String> resultList = ClarifaiApi.recognize(imageUrl);
 		if (resultList.contains("marijuana") || resultList.contains("human") || resultList.contains("nude")
 				|| resultList.contains("weapon") || resultList.contains("gore") || resultList.contains("drug")) {
