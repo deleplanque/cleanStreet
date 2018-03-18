@@ -3,18 +3,30 @@ import {Http} from '@angular/http';
 import {Quartier} from '../Bean/quartier';
 import {Localisation} from '../Bean/localisation';
 import {User} from '../../authentifiation/bean/user';
+import {Signalement} from '../Bean/signalement';
+import {Observable} from 'rxjs/Observable';
+import {HttpClient} from '@angular/common/http';
+import {ReponseCreation} from '../Bean/reponseCreation';
 
 @Injectable()
 export class SignalerService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
   private partagerUrl = 'api/ajouterSignalement';
+  private getQuartierParNomUrl = 'api/getQuartierParNom';
 
-  constructor(private _http: Http) {
+  constructor(private _http: HttpClient) {
 
   }
 
-  signaler(quartier: Quartier,  description: string, image: string,photoBase64: string, localisation: Localisation, indiceDeProprete: number, proprietaire: User) {
+
+  getQuartierParNom(nom: string): Observable<Quartier> {
+    const url = `${this.getQuartierParNomUrl}/${nom}`;
+    return this._http.get<Quartier>(url);
+  }
+
+  signaler(quartier: Quartier,  description: string, image: string, photoBase64: string,
+           localisation: Localisation, indiceDeProprete: number, proprietaire: User): Observable<ReponseCreation> {
     const body = {
       quartier: {
         id: quartier.id,
@@ -22,7 +34,7 @@ export class SignalerService {
       },
       description: description,
       photo: image,
-      photoBase64:photoBase64,
+      photoBase64: photoBase64,
       localisation: {
         latitude: localisation.latitude,
         longitude: localisation.longitude
@@ -37,7 +49,9 @@ export class SignalerService {
         signalements: null
       }
     };
-    return this._http.post(this.partagerUrl, body);
+    return this._http.post<ReponseCreation>(this.partagerUrl, body);
   }
+
+
 
 }

@@ -10,12 +10,14 @@ import {Localisation} from '../Bean/localisation';
 import {Quartier} from '../Bean/quartier';
 import {Router} from '@angular/router';
 import {Toast, ToasterService} from 'angular2-toaster';
+import {AppComponent} from '../../app.component';
+import {EnteteComponent} from '../../miseEnPage/entete/entete.component';
 declare var $: any;
 @Component ({
   selector: 'app-signaler',
   templateUrl: './signaler.component.html',
   styleUrls: ['./signaler.component.css'],
-  providers: [SignalerService, ToasterService]
+  providers: [SignalerService, ToasterService, EnteteComponent]
 })
 export class SignalerComponent implements OnInit {
   photoBase64: string = '';
@@ -25,7 +27,7 @@ export class SignalerComponent implements OnInit {
   lng: number;
 
   constructor(private router: Router, private accueilService: AccueilService,
-              private toasterService: ToasterService, private signalerService: SignalerService) {}
+              private toasterService: ToasterService, private signalerService: SignalerService, private entete: EnteteComponent) {}
 
   signalements: Signalement[];
   signalerForm: FormGroup;
@@ -34,13 +36,13 @@ export class SignalerComponent implements OnInit {
   localisation: Localisation;
   quartier: Quartier;
   proprietaire: any;
-  isLog: boolean;
+  selected = '';
 
   ngOnInit(): void {
     if (sessionStorage.getItem('utilisateur') != null) {
-      this.isLog = true;
+      this.entete.isLog = true;
     } else {
-      this.isLog = false;
+      this.entete.isLog = false;
       this.router.navigate(['/accueil']);
     }
     this.afficheSignalement();
@@ -82,15 +84,22 @@ export class SignalerComponent implements OnInit {
   changeListener($event) : void {
         this.readThis($event.target);
       }
-      
+
       readThis(inputValue: any): void {
         var file:File = inputValue.files[0];
         var myReader:FileReader = new FileReader();
-      
+
         myReader.onloadend = (e) => {
           this.photoBase64 = myReader.result;
         }
         myReader.readAsDataURL(file);
+      }
+
+      resetForm(): void {
+        this.formulaire.description = '';
+        this.selected = '';
+        this.formulaire.indiceDeProprete = null;
+        this.formulaire.image = '';
       }
 
   signaler(): void {
@@ -107,7 +116,15 @@ export class SignalerComponent implements OnInit {
       $('#description').removeClass('invalid');
     }
 
-    console.log('indice: ' + this.formulaire.indiceDeProprete);
+    if (this.selected === '') {
+      formIsValid = false;
+      $('#errorSelected').removeClass('cache');
+      $('#selected').addClass('invalid');
+    } else {
+      $('#errorSelected').addClass('cache');
+      $('#selected').removeClass('invalid');
+    }
+
     if (this.formulaire.indiceDeProprete === null) {
       formIsValid = false;
       $('#errorIndice').removeClass('cache');
@@ -125,21 +142,42 @@ export class SignalerComponent implements OnInit {
 
     if (formIsValid) {
       console.log('indice: ' + this.formulaire.indiceDeProprete);
-      this.quartier = new Quartier(2, 'Autres');
-      this.proprietaire = JSON.parse(sessionStorage.getItem('utilisateur'));
-      this.utilisateur = new User(this.proprietaire.id, this.proprietaire.nom, this.proprietaire.prenom, this.proprietaire.email);
-      this.imageSrc = "assets/images/"+$('#imageSignalement').val().split('/').pop().split('\\').pop();
-      console.log('image src: ' + this.imageSrc);
-      this.signalerService.signaler(this.quartier, this.formulaire.description, this.imageSrc, this.photoBase64, this.localisation,
-        this.formulaire.indiceDeProprete, this.utilisateur )
+      this.signalerService.getQuartierParNom(this.selected)
         .subscribe(data => {
           console.log(data);
-          this.popToast('success', 'Signalement', 'Votre signalement à bien été pris en compte \n CleanStreet vous remercie !');
+          this.quartier = data;
+          this.proprietaire = JSON.parse(sessionStorage.getItem('utilisateur'));
+          this.utilisateur = new User(this.proprietaire.id, this.proprietaire.nom, this.proprietaire.prenom, this.proprietaire.email);
+          this.imageSrc = 'assets/images/' + $('#imageSignalement').val().split('/').pop().split('\\').pop();
+          console.log('image src: ' + this.imageSrc);
+          this.signalerService.signaler(this.quartier, this.formulaire.description, this.imageSrc, this.photoBase64, this.localisation,
+            this.formulaire.indiceDeProprete, this.utilisateur )
+            .subscribe(data2 => {
+              console.log(data2);
+              switch (data2.reponse) {
+                case 'exist':
+                  this.popToast('info', 'Signalement', 'Un signalement à déjà été créé. Merci.');
+                  this.resetForm();
+                  break;
+                case 'created':
+                  this.popToast('success', 'Signalement', 'Votre signalement à bien été pris en compte \n CleanStreet vous remercie !');
+                  this.resetForm();
+                  break;
+                case 'picture':
+                  this.popToast('error', 'Signalement', 'Erreur lors de la création de votre signalement. ' +
+                    'L\'image renseignée ne correspond pas à des dechets');
+                  break;
+              }
+            }, error => {
+              console.log(error);
+              this.popToast('error', 'Signalement', 'Erreur lors de la création de votre signalement.');
+            });
         }, error => {
           console.log(error);
-          this.popToast('error', 'Signalement', 'Erreur lors de la création de votre signalement. ' +
-            'L\'image renseignée ne correspond pas à des dechets');
+          this.popToast('error', 'Quartier', 'Erreur lors de la récupération du quartier');
         });
+
+
     }
 
   }

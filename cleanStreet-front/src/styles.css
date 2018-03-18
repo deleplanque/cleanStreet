@@ -42,6 +42,9 @@ body {
   margin: 0;
   padding: 0;
 }
+.btn-filter {
+  margin-top: 20px;
+}
 
 .background {
   position: absolute;
