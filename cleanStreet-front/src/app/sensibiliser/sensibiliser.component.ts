@@ -19,8 +19,8 @@ export class SensibiliserComponent implements OnInit {
   signalement: Signalement;
   isSelected = false;
   geolocationPosition: Position;
-  lat: number;
-  lng: number;
+  lat: number = 50.6062442;
+  lng: number = 3.132318;
 
   constructor(private router: Router, private accueilService: AccueilService,
               private alertService: AlertService, private toasterService: ToasterService) {}

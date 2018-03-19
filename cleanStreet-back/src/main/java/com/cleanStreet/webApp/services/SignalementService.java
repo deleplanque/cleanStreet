@@ -52,6 +52,7 @@ public class SignalementService implements ISignalementService {
 				System.out.println("Error : IOexception" + e.getMessage());
 				signalement.setPhotoBase64("");
 				signalement.setPhoto("assets/images/noimage.jpg");
+				signalementDAO.saveAndFlush(signalement);
 				return "created";
 			}
 
@@ -76,6 +77,7 @@ public class SignalementService implements ISignalementService {
 		} else {
 			System.out.println(false);
 			signalement.setPhotoBase64("true"); //not to upload a long base64 string
+			signalementDAO.saveAndFlush(signalement);
 			return "created";
 		}
 

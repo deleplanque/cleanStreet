@@ -138,7 +138,10 @@ agm-map {
   height: 450px;
 
 }
-
+.imgphoto{
+  max-height:200px;
+  object-fit: contain;
+}
 .btn-submit{
   margin-top: 25px;
   margin-bottom: 20px;

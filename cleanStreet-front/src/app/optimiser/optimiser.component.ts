@@ -21,8 +21,8 @@ export class OptimiserComponent implements OnInit {
   quartiers: Quartier[];
   perimetre = 100;
   selected = 'Tous';
-  lat: number = 48.849919799999995;
-  lng: number = 2.6370411;
+  lat: number = 50.6062442;
+  lng: number = 3.132318;
 
   constructor(private router: Router, private accueilService: AccueilService, private toasterService: ToasterService, private entete: EnteteComponent) {}
 

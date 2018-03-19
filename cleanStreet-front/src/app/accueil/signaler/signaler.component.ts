@@ -23,8 +23,8 @@ export class SignalerComponent implements OnInit {
   photoBase64: string = '';
   imageSrc: string = 'assets/images/noimage.jpg';
   geolocationPosition: Position;
-  lat: number;
-  lng: number;
+  lat: number = 50.6062442;
+  lng: number = 3.132318;
 
   constructor(private router: Router, private accueilService: AccueilService,
               private toasterService: ToasterService, private signalerService: SignalerService, private entete: EnteteComponent) {}
