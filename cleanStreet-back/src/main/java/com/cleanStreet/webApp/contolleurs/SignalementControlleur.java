@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.cleanStreet.webApp.entite.ConnexionForm;
 import com.cleanStreet.webApp.entite.FiltreForm;
 import com.cleanStreet.webApp.entite.Quartier;
+import com.cleanStreet.webApp.entite.ResponseCreation;
 import com.cleanStreet.webApp.entite.Signalement;
 import com.cleanStreet.webApp.services.ISignalementService;
 
@@ -27,13 +28,9 @@ public class SignalementControlleur {
 	ISignalementService signalementService;
 
 	@RequestMapping(value = "/ajouterSignalement", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Signalement> ajouterSignalement(@RequestBody Signalement signalement) {
-
-		Signalement s = signalementService.ajouterSignalement(signalement);
-		if (s == null) {
-			return new ResponseEntity<Signalement>(HttpStatus.CONFLICT);
-		}
-		return new ResponseEntity<Signalement>(s, HttpStatus.CREATED);
+	public ResponseEntity<ResponseCreation> ajouterSignalement(@RequestBody Signalement signalement) {
+		String s = signalementService.ajouterSignalement(signalement);
+		return new ResponseEntity<ResponseCreation>(new ResponseCreation(s), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/afficheSignalement", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -73,5 +70,17 @@ public class SignalementControlleur {
 	@RequestMapping(value = "/getSignalementsFiltres", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Signalement>> getSignalementsFiltres(@RequestBody FiltreForm filtreForm) {
 		return new ResponseEntity<List<Signalement>>(signalementService.getSignalementsFiltres(filtreForm), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/supprimerSignalement", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Signalement>> supprimerSignalement(@RequestBody Signalement signalament) {
+		return new ResponseEntity<List<Signalement>>(signalementService.supprimerSignalement(signalament), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/getQuartierParNom/{nom}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Quartier> getQuartierParNom(@PathVariable(value = "nom") String nom) {
+		return new ResponseEntity<Quartier>(signalementService.getQuartierParNom(nom),
+				HttpStatus.OK);
+
 	}
 }

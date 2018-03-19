@@ -6,4 +6,6 @@ import com.cleanStreet.webApp.entite.Quartier;
 
 public interface IQuartierDAO extends JpaRepository<Quartier, Long>{
 
+	Quartier findByNom(String nom);
+
 }

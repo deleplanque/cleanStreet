@@ -14,7 +14,7 @@ export class AccueilService {
   private getQuartiertUrl = 'api/getQuartiers';
   private getSignalementByIdUrl = 'api/getSignalementById';
   private getSignalementsFiltresUrl = 'api/getSignalementsFiltres';
-
+  private supprimerSignalementUrl = 'api/supprimerSignalement';
   constructor(private _http: HttpClient) {
       }
 
@@ -41,5 +41,9 @@ export class AccueilService {
       lng: lng
     };
     return this._http.post<Signalement[]>(this.getSignalementsFiltresUrl, body);
+  }
+
+  supprimerSignalement(signalement): Observable<Signalement[]> {
+    return this._http.post<Signalement[]>(this.supprimerSignalementUrl, signalement);
   }
 }

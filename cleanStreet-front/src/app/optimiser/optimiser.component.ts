@@ -6,31 +6,31 @@ import {AccueilService} from '../accueil/accueil.service';
 import {Router} from '@angular/router';
 import {Quartier} from '../accueil/Bean/quartier';
 import {Toast, ToasterService} from 'angular2-toaster';
+import {EnteteComponent} from '../miseEnPage/entete/entete.component';
 declare var $: any;
 @Component ({
   selector: 'app-optimiser',
   templateUrl: './optimiser.component.html',
   styleUrls: ['./optimiser.component.css'],
-  providers: [OptimiserService, ToasterService]
+  providers: [OptimiserService, ToasterService, EnteteComponent]
 })
 
 export class OptimiserComponent implements OnInit {
   geolocationPosition: Position;
   signalements: Signalement[];
   quartiers: Quartier[];
-  isLog: boolean;
   perimetre = 100;
   selected = 'Tous';
-  lat: number;
-  lng: number;
+  lat: number = 48.849919799999995;
+  lng: number = 2.6370411;
 
-  constructor(private router: Router, private accueilService: AccueilService, private toasterService: ToasterService) {}
+  constructor(private router: Router, private accueilService: AccueilService, private toasterService: ToasterService, private entete: EnteteComponent) {}
 
   ngOnInit(): void {
     if (sessionStorage.getItem('utilisateur') != null) {
-      this.isLog = true;
+      this.entete.isLog = true;
     } else {
-      this.isLog = false;
+      this.entete.isLog = false;
       this.router.navigate(['/accueil']);
     }
 
@@ -72,6 +72,18 @@ export class OptimiserComponent implements OnInit {
         this.signalements = data;
       }, error => {
         console.log(error);
+      });
+  }
+
+  supprimerSignalement(signalement): void {
+    this.accueilService.supprimerSignalement(signalement)
+      .subscribe(data => {
+        console.log(data);
+        this.signalements = data;
+        this.popToast('success', 'Suppression', 'Signalement supprimé avec succés');
+      }, error => {
+        console.log(error);
+        this.popToast('error', 'Suppression', 'Erreur lors de la suppression du signalement');
       });
   }
 
