@@ -6,6 +6,7 @@ C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStr
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\api\ClarifaiApi.java
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\dao\IQuartierDAO.java
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\entite\Quartier.java
+C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\entite\ResponseCreation.java
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\services\ContactService.java
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\services\LocalisationService.java
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\contolleurs\LocalisationControlleur.java
@@ -18,6 +19,7 @@ C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStr
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\dao\ILocalisationDAO.java
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\services\IAuthentificationService.java
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\dao\IContactDAO.java
+C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\entite\FiltreForm.java
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\entite\Utilisateur.java
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\services\SignalementService.java
 C:\Users\david\Documents\cleanStreet\cleanStreet-back\src\main\java\com\cleanStreet\webApp\services\AuthentificationService.java
