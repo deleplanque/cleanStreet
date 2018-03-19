@@ -78,6 +78,7 @@ public class SignalementService implements ISignalementService {
 			signalement.setPhotoBase64("true"); //not to upload a long base64 string
 			return "created";
 		}
+
 	}
 
 	
