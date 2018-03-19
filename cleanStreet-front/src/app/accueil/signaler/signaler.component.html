@@ -23,7 +23,25 @@
             <p class="col m12 range-field">
               <input type="range" id="indice" formControlName="indiceDeProprete" [(ngModel)]="formulaire.indiceDeProprete" min="0" max="10" />
             </p>
+            <span>{{formulaire.indiceDeProprete}}</span>
             <span id="errorIndice" class="cache errorMessage">Veuillez préciser l'indice de propreté.</span>
+          </div>
+          <div class="row">
+            <div class="col s4">
+              <label>Quartier : </label><br>
+              <mat-form-field>
+                <mat-select id="selected" [(value)]="selected">
+                  <mat-option disabled="true" value="">Choisir un quartier</mat-option>
+                  <mat-option value="Autres">Autres</mat-option>
+                  <mat-option value="Fives">Fives</mat-option>
+                  <mat-option value="Saint-Sauveur">Saint-Sauveur</mat-option>
+                  <mat-option value="Moulins">Moulins</mat-option>
+                  <mat-option value="Vieux-Lille">Vieux-Lille</mat-option>
+                  <mat-option value="Wazemmes">Wazemmes</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <span id="errorSelected" class="cache errorMessage">Veuillez préciser le quartier.</span>
+            </div>
           </div>
           <div class="file-field input-field">
             <div class="btn">

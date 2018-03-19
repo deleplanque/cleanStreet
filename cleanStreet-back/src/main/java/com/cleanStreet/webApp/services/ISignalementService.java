@@ -8,7 +8,7 @@ import com.cleanStreet.webApp.entite.Signalement;
 
 public interface ISignalementService {
 
-	Signalement ajouterSignalement(Signalement signalement);
+	String ajouterSignalement(Signalement signalement);
 	List<Signalement> getSignalement();
 	List<Signalement> getSignalementParQuartier(String quartier);
 	void supprimerSignalement(int id);
@@ -16,5 +16,7 @@ public interface ISignalementService {
 	Signalement getSignalementById(int id);
 	List<Quartier> getQuartiers();
 	List<Signalement> getSignalementsFiltres(FiltreForm filtreForm);
+	List<Signalement> supprimerSignalement(Signalement signalament);
+	Quartier getQuartierParNom(String nom);
 
 }
