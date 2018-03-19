@@ -20,6 +20,7 @@ export class EnteteComponent implements OnInit {
   isLog: boolean;
   email: string;
   password: string;
+  droit: number;
 
   nomI: string;
   prenomI: string;
@@ -52,8 +53,9 @@ export class EnteteComponent implements OnInit {
       .subscribe(data => {
         sessionStorage.setItem('utilisateur', JSON.stringify(data));
         this.isLog = true;
+        this.droit = data.droit;
         this.router.navigate(['/accueil']);
-        console.log(data);
+        console.log(this.droit + ' ==>Droit');
         this.popToast('success', 'Connexion', 'Bonjour ' + data.nom + ' ' + data.prenom);
         $('#modalConnexion').modal('close');
       }, error => {

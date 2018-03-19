@@ -17,7 +17,8 @@ export class InscriptionService {
       nom: nom,
       prenom: prenom,
       email: mail,
-      motDePasse: pass
+      motDePasse: pass,
+      droit: 1
     };
     return this._http.post<User>(this.inscriptionUrl, body);
   }

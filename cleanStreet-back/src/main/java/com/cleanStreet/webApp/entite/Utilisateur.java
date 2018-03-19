@@ -29,6 +29,17 @@ public class Utilisateur implements Serializable{
 	private String prenom;
 	private String email;
 	private String motDePasse;
+	private int droit;
+
+	public int getDroit() {
+		return droit;
+	}
+
+
+	public void setDroit(int droit) {
+		this.droit = droit;
+	}
+
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="proprietaire", cascade = CascadeType.ALL)
 	@JsonIgnore
@@ -40,22 +51,24 @@ public class Utilisateur implements Serializable{
 	}
 
 
-	public Utilisateur(int id, String nom, String prenom, String email, List<Signalement> signalements) {
+	public Utilisateur(int id, String nom, String prenom, String email, List<Signalement> signalements, int droit) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.signalements = signalements;
+		this.droit = droit;
 	}
 
-	public Utilisateur(int id, String nom, String prenom, String email, String motDePasse) {
+	public Utilisateur(int id, String nom, String prenom, String email, String motDePasse, int droit) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.motDePasse = motDePasse;
+		this.droit = droit;
 	}
 
 

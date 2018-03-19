@@ -6,7 +6,7 @@
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li *ngIf="isLog"><a href="" routerLink="/sensibilisez" routerLinkActive>Sensibiliser</a></li>
-        <li *ngIf="isLog"><a href="" routerLink="/optimisez" routerLinkActive>Optimiser</a></li>
+        <li *ngIf="isLog && droit === 10"><a href="" routerLink="/optimisez" routerLinkActive>Optimiser</a></li>
         <li *ngIf="isLog"><a href=""  routerLink="/signalez" routerLinkActive>Signaler</a></li>
         <li *ngIf="isLog"><a href="" (click)="deconnexion()">Deconnexion</a></li>
         <li *ngIf="!isLog"><a (click)="connexion()">Connexion</a></li>
@@ -14,7 +14,7 @@
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li *ngIf="isLog"><a href="" routerLink="/sensibilisez" routerLinkActive>Sensibiliser</a></li>
-        <li *ngIf="isLog"><a href="" routerLink="/optimisez" routerLinkActive>Optimiser</a></li>
+        <li *ngIf="isLog && droit === 10"><a href="" routerLink="/optimisez" routerLinkActive>Optimiser</a></li>
         <li *ngIf="isLog"><a href=""  routerLink="/signalez" routerLinkActive>Signaler</a></li>
         <li *ngIf="isLog"><a href="" (click)="deconnexion()">Deconnexion</a></li>
         <li *ngIf="!isLog"><a (click)="connexion()">Connexion</a></li>

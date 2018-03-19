@@ -4,15 +4,15 @@
 <toaster-container></toaster-container>
 
 <div class="row ">
-  <div class="col m10 offset-m1">
+  <div class="col s12 m10 offset-m1">
     <div class="popin-header">
       <h3>Signaler : </h3>
     </div>
     <div class="popin description-popin row">
-      <div class="col s6">
+      <div class="col s12 m6">
         <form [formGroup]="signalerForm" (ngSubmit)="signaler()" >
           <div class="row">
-            <p class="input-field col m12">
+            <p class="input-field col s12 m12">
               <textarea id="description" formControlName="description" [(ngModel)]="formulaire.description" [name]="formulaire.description" class="materialize-textarea"></textarea>
               <label for="description">Description : </label>
               <span id="errorDescription" class="cache errorMessage">Veuillez ajouter une description à votre signalement.</span>
@@ -20,14 +20,14 @@
           </div>
           <div class="row">
             <label for="indice">Indice de propreté : </label>
-            <p class="col m12 range-field">
+            <p class="col s12 m12 range-field">
               <input type="range" id="indice" formControlName="indiceDeProprete" [(ngModel)]="formulaire.indiceDeProprete" min="0" max="10" />
             </p>
             <span>{{formulaire.indiceDeProprete}}</span>
             <span id="errorIndice" class="cache errorMessage">Veuillez préciser l'indice de propreté.</span>
           </div>
           <div class="row">
-            <div class="col s4">
+            <div class="col s12 m4">
               <label>Quartier : </label><br>
               <mat-form-field>
                 <mat-select id="selected" [(value)]="selected">
@@ -60,7 +60,7 @@
           </div>
         </form>
       </div>
-      <div class="col s6 mapSignaler">
+      <div class="col s12 m6 mapSignaler">
         <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
           <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="'assets/images/marker_humain.png'"></agm-marker>
           <agm-marker *ngFor="let signalement of signalements" [latitude]="signalement.localisation.latitude" [longitude]="signalement.localisation.longitude"></agm-marker>

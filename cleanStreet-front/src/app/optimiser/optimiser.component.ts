@@ -23,11 +23,13 @@ export class OptimiserComponent implements OnInit {
   selected = 'Tous';
   lat: number = 50.6062442;
   lng: number = 3.132318;
+  user: any;
 
   constructor(private router: Router, private accueilService: AccueilService, private toasterService: ToasterService, private entete: EnteteComponent) {}
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('utilisateur') != null) {
+    this.user = JSON.parse(sessionStorage.getItem('utilisateur'));
+    if (sessionStorage.getItem('utilisateur') != null && this.user.droit === 10) {
       this.entete.isLog = true;
     } else {
       this.entete.isLog = false;

@@ -27,7 +27,7 @@ public class AuthentificationControlleur {
 		if (u == null) {
 			return new ResponseEntity<Utilisateur>(HttpStatus.CONFLICT);
 		}
-		return new ResponseEntity<Utilisateur>(new Utilisateur(u.getId(), u.getNom(), u.getPrenom(), u.getEmail(), u.getSignalements()), HttpStatus.CREATED);
+		return new ResponseEntity<Utilisateur>(new Utilisateur(u.getId(), u.getNom(), u.getPrenom(), u.getEmail(), u.getSignalements(), u.getDroit()), HttpStatus.CREATED);
 	}
 
 	@RequestMapping(value = "/connexion", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -37,7 +37,7 @@ public class AuthentificationControlleur {
 		if (u == null) {
 			return new ResponseEntity<Utilisateur>(HttpStatus.CONFLICT);
 		}
-		return new ResponseEntity<Utilisateur>(new Utilisateur(u.getId(), u.getNom(), u.getPrenom(), u.getEmail(),u.getSignalements()), HttpStatus.OK);
+		return new ResponseEntity<Utilisateur>(new Utilisateur(u.getId(), u.getNom(), u.getPrenom(), u.getEmail(),u.getSignalements(), u.getDroit()), HttpStatus.OK);
 	}
 
 }
